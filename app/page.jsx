@@ -1,9 +1,24 @@
+import React from "react";
+import style from './page.module.css';
+import Header from "./components/header/Header";
+
 export default function Home() {
   return (
     <div>
-      <DashHeader nome={"Felipe 92 Dev"} email={"dev.felipesantos@gmail.com"} />
-      <div style={{ marginLeft: 100 }}>
-        <p>Página principal</p>
+      <Header />
+      <div className={style.page}>
+        <div className={style.overlay}>
+          <div className={style.loginBox}>
+            <h2>Login</h2>
+            <form>
+              <label htmlFor="cpf">CPF</label>
+              <input type="text" id="cpf" name="cpf" required />
+              <label htmlFor="password">Senha</label>
+              <input type="password" id="password" name="password" required />
+              <button type="submit">Entrar</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );
