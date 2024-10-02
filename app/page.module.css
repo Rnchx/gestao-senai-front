@@ -1,64 +1,88 @@
 .page {
-    position: relative;
-    height: 100vh;
-    background-image: url('../public/wallpaper-home.png.jpg');
-    background-size: cover;
-    background-position: center;
+  position: relative;
+  height: 83.4vh;
+  width: 85vw;
+  background-image: url("../public/wallpaper-home.png.jpg");
+
+  background-size: cover;
+  background-position: center;
+}
+.loginBox{
+    align-items: center;
+    
 }
 
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to left, rgba(255, 255, 255, 255), rgba(255, 255, 255, 0));
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 255),
+    rgba(255, 255, 255, 0)
+  );
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.inputBox {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  
+  width: 300px;
+  opacity: 1;
+  margin-right: -130px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.loginBox {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    margin-right: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+
 
 .loginBox h2 {
-    margin-bottom: 20px;
-    text-align: center;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .loginBox form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .loginBox label {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .loginBox input {
-    margin-bottom: 15px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.loginBox button {
-    padding: 10px;
-    background-color: #e60000;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
+.button {
+  padding: 10px;
+  background-color: #e60000;
+  color: white;
+  font-size: 16px;
+  border: none;
+  width: 90px;
+  border-radius: 50px;
     cursor: pointer;
+    margin-right: -50px;
+    margin-bottom: -310px;
+    margin-left: -60px;
+  
 }
 
 .loginBox button:hover {
-    background-color: #cc0000;
+  background-color: #cc0000;
+}
+.h2{
+    text-align: center;
+    margin-right: -130px;
+    color: #ef1919;
+    margin-bottom: -40px;
 }

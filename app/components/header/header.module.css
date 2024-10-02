@@ -1,0 +1,17 @@
+.logo{
+    width: 300px;
+    height: 65px;
+    margin: 10px;
+    margin-right: 27px;
+    
+}
+.divImg{
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+.headerContainer{
+    background-color: #DA251C;
+    padding: 10px;
+    
+}
