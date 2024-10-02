@@ -1,21 +1,20 @@
 .headerContainer {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: #DA251C;
-    padding: 25px 0;
-    height: 30px;
+    padding: 35px 0;
+    height: 20px;
     width: 100%;
   }
-
- .divImg {
-
- } 
   
   .logo {
     width: 150px;
     height: auto;
-    margin-right: 30px;
-    padding: 3px;
-    margin-bottom: 2px;
+  }
+
+  .divImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
