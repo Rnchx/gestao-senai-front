@@ -1,7 +1,7 @@
 import style from './page.module.css';
 import SecondHeader from '../components/header2/SecondHeader';
 
-const Header = () => {
+const PageTest = () => {
   return (
     <div>
       <SecondHeader />
@@ -10,4 +10,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default PageTest

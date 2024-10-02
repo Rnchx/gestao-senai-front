@@ -1,0 +1,15 @@
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+ .divImg {
+    
+ } 
+  
+  .logo {
+    width: 150px;
+    height: auto;
+    margin-right: 30px;
+  }
