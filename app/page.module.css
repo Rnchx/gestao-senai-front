@@ -7,9 +7,8 @@
   background-size: cover;
   background-position: center;
 }
-.loginBox{
-    align-items: center;
-    
+.loginBox {
+  align-items: center;
 }
 
 .overlay {
@@ -28,18 +27,20 @@
   align-items: center;
 }
 .inputBox {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(249, 247, 247, 0.8);
   padding: 20px;
-  border-radius: 8px;
-  
-  width: 300px;
+  border-radius: 20px;
+  width: 250px;
   opacity: 1;
   margin-right: -130px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 4px 8px rgba(14, 13, 13, 0.427);
+  height: 135px;
 }
 
-
-
+.password {
+  margin-bottom: -10px;
+  margin: 5px;
+}
 .loginBox h2 {
   margin-bottom: 20px;
   text-align: center;
@@ -70,19 +71,17 @@
   border: none;
   width: 90px;
   border-radius: 50px;
-    cursor: pointer;
-    margin-right: -50px;
-    margin-bottom: -310px;
-    margin-left: -60px;
-  
+  cursor: pointer;
+  margin-bottom: -300px;
+  margin-left: -40px;
 }
 
 .loginBox button:hover {
   background-color: #cc0000;
 }
-.h2{
-    text-align: center;
-    margin-right: -130px;
-    color: #ef1919;
-    margin-bottom: -40px;
+.h2 {
+  text-align: center;
+  margin-right: -130px;
+  color: #ef1919;
+  margin-bottom: -40px;
 }

@@ -12,10 +12,8 @@ export default function Home() {
             <h2 className={style.h2}>Login</h2>
             <div className={style.inputBox}>
               <form>
-                <label htmlFor="cpf">CPF</label>
-                <input type="text" id="cpf" name="cpf" required />
-                <label htmlFor="password">Senha</label>
-                <input type="password" id="password" name="password" required />
+                <input placeholder="CPF" type="text" id="cpf" name="cpf" required />
+                <input placeholder="Senha" type="password" id="password" name="password" className="password" required />
               </form>
             </div>
             
