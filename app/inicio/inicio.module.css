@@ -1,42 +1,50 @@
 .page {
-    position: relative;
-    height: 92.7vh;
-    width: 100vw;
-    background-image: url("../../public/imageFundo2.jpg");
-    background-size: cover;
-    background-position: center;
-    
+  position: relative;
+  height: auto;
+  width: auto;
+  background-image: url("../../public/imagemFundo.jpg");
+  background-size: cover;
+  background-position: center;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  bottom: 0;
+  margin-top: 70px;
 }
 
 .overlay {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.5;
-    
-    transition: opacity 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    background-color: white;
-    width: 300px;
-    height: 300px;
-    border-radius: 10px;
-    opacity: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .text {
-    color: red;
-    font-size: 24px;
-  }
-  
+  display: flex;
+  margin: 60px;
+  flex-direction: column;
+  margin-top: 33vh;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: white;
+  width: 280px;
+  height: 280px;
+  border-radius: 15px;
+  border: 1px gray solid;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 4px 8px rgba(14, 13, 13, 0.427);
+}
+
+.text {
+  color: #DA251C;
+  font-size: 24px;
+}
+
+.img{
+  width: 45%;
+  height: 45%;
+}
