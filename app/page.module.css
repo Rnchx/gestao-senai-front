@@ -1,6 +1,6 @@
 .page {
   position: relative;
-  height: 83.4vh;
+  height: 89vh;
   width: 85vw;
   background-image: url("../public/wallpaper-home.png.jpg");
 
@@ -12,6 +12,7 @@
 }
 
 .overlay {
+  
   position: absolute;
   top: 0;
   left: 0;
