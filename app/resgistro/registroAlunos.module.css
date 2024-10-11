@@ -1,0 +1,55 @@
+.page {
+    position: relative;
+    height: auto;
+    width: auto;
+    background-image: url("../../public/imagemFundo.jpg");
+    background-size: cover;
+    background-position: center;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    bottom: 0;
+    margin-top: 70px;
+  }
+  
+  .overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container {
+    display: flex;
+    margin: 60px;
+    flex-direction: column;
+    margin-top: 33vh;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: white;
+    width: 280px;
+    height: 280px;
+    border-radius: 15px;
+    border: 1px gray solid;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 4px 8px rgba(14, 13, 13, 0.427);
+    transition: transform 0.3s ease;
+  }
+  
+  .container:hover {
+    transform: scale(1.05);
+  }
+  
+  .text {
+    color: #DA251C;
+    font-size: 24px;
+  }
+  
+  .img{
+    width: 45%;
+    height: 45%;
+  }

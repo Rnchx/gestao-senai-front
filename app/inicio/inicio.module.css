@@ -37,6 +37,11 @@
   justify-content: center;
   align-items: center;
   box-shadow: 1px 4px 8px rgba(14, 13, 13, 0.427);
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.05);
 }
 
 .text {
