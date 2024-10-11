@@ -9,18 +9,18 @@ export default function Home() {
 
                 <div className={style.overlay}>
                     <div className={style.container}>
-                        <h1 className={style.text}>Registro de alunos</h1>
-                        <img className={style.img} src="alunos.png" alt="icone" />
+                        <h1 className={style.text}>Itinerário formativo</h1>
+                        <img className={style.img} src="caca.png" alt="icone" />
                     </div>
 
                     <div className={style.container}>
-                        <h1 className={style.text}>AAPM</h1>
-                        <img className={style.img} src="AAPM.png" alt="icone" />
+                        <h1 className={style.text}>...</h1>
+                        <img className={style.img} src="" alt="icone" />
                     </div>
 
                     <div className={style.container}>
-                        <h1 className={style.text}>AAPM</h1>
-                        <img className={style.img} src="AAPM.png" alt="icone" />
+                        <h1 className={style.text}>Industrial</h1>
+                        <img className={style.img} src="solucao.png" alt="icone" />
                     </div>
                 </div>
             </div>
