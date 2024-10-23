@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { useAuth } from '../authContext/page';
+import { useAuth } from '../authContext/user';
 
 export const useLogin = () => {
     const { login } = useAuth(); // Usar a função de login do contexto
@@ -27,7 +27,7 @@ export const useLogin = () => {
 
             const data = await response.json();
             const token = data.token;
-            
+
             login(token); // Salva o token no contexto
 
             return true; // Login bem-sucedido

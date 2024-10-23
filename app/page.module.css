@@ -11,7 +11,6 @@
 }
 
 .overlay {
-  
   position: absolute;
   top: 0;
   left: 0;
@@ -56,32 +55,47 @@
 }
 
 .loginBox input {
-  margin-bottom: 15px;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #ccc;
   border-radius: 4px;
+  margin: 5px;
 }
 
-.button {
-  padding: 10px;
+.loginBox button {
+  padding: 8px;
   background-color: #e60000;
   color: white;
   font-size: 16px;
   border: none;
-  width: 90px;
+  width: 100px;
   border-radius: 50px;
-  cursor: pointer;
-  margin-bottom: -300px;
-  margin-left: -40px;
+  margin-top: 10px;
+  margin-left: 55px;
 }
 
 .loginBox button:hover {
   background-color: #cc0000;
+  cursor: pointer;
 }
 .h2 {
   text-align: center;
   margin-right: -130px;
   color: #ef1919;
   margin-bottom: -40px;
+}
+
+.containerMessage {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.messageSucess {
+  color: black;
+}
+
+.messageError {
+  color: #ef1919;
 }

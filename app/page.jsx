@@ -19,7 +19,7 @@ export default function Login() {
     const loginSuccess = await logIn(cpf, password);
 
     if (loginSuccess) {
-      router.push('/inicio'); // Redireciona para a página protegida após o login
+      router.push('/inicio');
     }
   };
 
@@ -48,11 +48,14 @@ export default function Login() {
                   required
                   onChange={(e) => setPassword(e.target.value)}
                 />
+
+                <div className={style.containerMessage}>
+                    {error && <p className={style.messageError}>{error}</p>}
+                    {isLoading && <p className={style.messageSucess}>carregando...</p>}
+                </div>
                 <button type="submit">Entrar</button>
               </form>
             </div>
-            {error && <p className="error">{error}</p>}
-            {isLoading && <p>Carregando...</p>}
           </div>
         </div>
       </div>

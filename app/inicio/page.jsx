@@ -1,18 +1,20 @@
-'use client'; // Marcar como Client Component
+'use client';
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../components/AuthContext/page';
+import { useAuth } from '../components/authContext/user';
 import style from './inicio.module.css';
 import SecondHeader from '../components/header2/SecondHeader';
 
 export default function Home() {
-    const { isAuthenticated } = useAuth(); // Verifica se o usuário está autenticado
+    const { isAuthenticated } = useAuth();
+    console.log(isAuthenticated);
+
     const router = useRouter();
 
     useEffect(() => {
         if (!isAuthenticated()) {
-            router.push('/login'); // Redireciona se não estiver autenticado
+            router.push('/');
         }
     }, [isAuthenticated, router]);
 
@@ -21,14 +23,21 @@ export default function Home() {
             <SecondHeader />
             <div className={style.page}>
                 <div className={style.overlay}>
-                    <div className={style.container}>
-                        <h1 className={style.text}>Registro de alunos</h1>
-                        <img className={style.img} src="alunos.png" alt="icone" />
-                    </div>
-                    <div className={style.container}>
-                        <h1 className={style.text}>AAPM</h1>
-                        <img className={style.img} src="AAPM.png" alt="icone" />
-                    </div>
+
+                    <a className={style.linkContainer} href="../tipoCursos">
+                        <div className={style.container}>
+                            <h1 className={style.text}>Registro de alunos</h1>
+                            <img className={style.img} src="alunos.png" alt="icone" />
+                        </div>
+                    </a>
+
+                    <a className={style.linkContainer} href="../tipoCursos">
+                        <div className={style.container}>
+                            <h1 className={style.text}>AAPM</h1>
+                            <img className={style.img} src="AAPM.png" alt="icone" />
+                        </div>
+                    </a>
+
                 </div>
             </div>
         </div>

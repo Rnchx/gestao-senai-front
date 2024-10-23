@@ -34,6 +34,8 @@ export const AuthProvider = ({ children }) => {
 
     // Função para verificar se o usuário está autenticado
     const isAuthenticated = () => !!authToken;
+    console.log(isAuthenticated);
+    
 
     return (
         <AuthContext.Provider value={{ authToken, login, logout, isAuthenticated }}>
@@ -42,5 +44,4 @@ export const AuthProvider = ({ children }) => {
     );
 };
 
-// Hook para usar o contexto
 export const useAuth = () => useContext(AuthContext);

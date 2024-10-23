@@ -21,6 +21,10 @@
   justify-content: center;
 }
 
+.linkContainer {
+  text-decoration: none;
+}
+
 .container {
   display: flex;
   margin: 60px;
