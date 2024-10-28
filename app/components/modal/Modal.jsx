@@ -1,57 +1,39 @@
 import React, { useState } from 'react';
+import './Modal.css';
 
-const Modal = ({ numero, status, nome, turma, onClose }) => {
-  const [nomeAluno, setNomeAluno] = useState('');
-  const [turmaAluna, setTurmaAluna] = useState('');
+const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
+  const [studentName, setStudentName] = useState('');
 
-  const handleDesocupar = async () => {
-    try {
-      const response = await fetch(`/api/armarios/${numero}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ status: 'vago' })
-      });
-
-      if (!response.ok) {
-        throw new Error('Erro ao desocupar o armário');
-      }
-
-      onClose();
-    } catch (error) {
-      console.error('Erro ao desocupar o armário:', error);
-    }
-  };
-
-  const handleCadastrar = async () => {
-    try {
-      const response = await fetch('/api/alunos', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ nome, turma })
-      });
-
-      if (!response.ok) {
-        throw new Error('Erro ao cadastrar o aluno');
-      }
-
-      onClose();
-    } catch (error) {
-      console.error('Erro ao cadastrar o aluno:', error);
+  const handleAssignClick = () => {
+    if (studentName) {
+      onAssign(locker.id, studentName);
     }
   };
 
   return (
-    <div className="modal">
-      <h2>Informações do Armário {numero}</h2>
-      <p>Status: {status}</p>
-      <p>Nome: {nome}</p>
-      <p>Turma: {turma}</p>
-      <button onClick={handleDesocupar}>Desocupar</button>
-      <button onClick={handleCadastrar}>Cadastrar</button>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <h2>Armário {locker.id}</h2>
+        {locker.occupationStatus === 'ocupado' ? (
+          <>
+            <p><strong>Status:</strong> Ocupado</p>
+            <p><strong>Nome:</strong> {locker.owner}</p>
+            <button onClick={() => onUnassign(locker.id)}>Desocupar</button>
+          </>
+        ) : (
+          <>
+            <p><strong>Status:</strong> Vago</p>
+            <input
+              type="text"
+              placeholder="Nome do estudante"
+              value={studentName}
+              onChange={(e) => setStudentName(e.target.value)}
+            />
+            <button onClick={handleAssignClick}>Atribuir</button>
+          </>
+        )}
+        <button className="close-button" onClick={onClose}>Fechar</button>
+      </div>
     </div>
   );
 };
