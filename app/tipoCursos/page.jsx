@@ -35,20 +35,26 @@ export default function TipoCursos() {
             <SecondHeader />
             <div className={style.page}>
                 <div className={style.overlay}>
+                    <a href="">
                     <div className={style.container}>
                         <h1 className={style.text}>Itinerário formativo</h1>
                         <img className={style.img} src="caca.png" alt="icone" />
-                    </div>
+                        </div>
+                    </a>
 
+                    <a href="">
                     <div className={style.container}>
                         <h1 className={style.text}>Técnico</h1>
                         <img className={style.img} src="iconeTecnico.png" alt="icone" />
-                    </div>
+                        </div>
+                    </a>
 
+                    <a href="">
                     <div className={style.container}>
                         <h1 className={style.text}>Industrial</h1>
                         <img className={style.img} src="solucao.png" alt="icone" />
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
