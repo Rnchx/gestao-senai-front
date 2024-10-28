@@ -1,0 +1,18 @@
+.app {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .header {
+    background-color: #d32f2f;
+    color: white;
+    padding: 1rem;
+  }
+  
+  .locker-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+  }
