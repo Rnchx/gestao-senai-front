@@ -1,0 +1,20 @@
+.locker {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .occupied {
+    background-color: #d32f2f;
+    color: white;
+  }
+  
+  .available {
+    background-color: #9e9e9e;
+    color: white;
+  }
