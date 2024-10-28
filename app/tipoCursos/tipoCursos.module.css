@@ -20,6 +20,10 @@
     align-items: center;
     justify-content: center;
   }
+
+  .linkImage {
+    text-decoration: none;
+  }
   
   .container {
     display: flex;

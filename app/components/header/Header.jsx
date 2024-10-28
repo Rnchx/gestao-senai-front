@@ -5,7 +5,7 @@ const Header = () => {
     <div className={style.headerContainer}>
       <div className={style.divImg}>
         <img
-          src="senaiLogo.png"
+          src="Logo.png"
           alt="Logo da Empresa"
           className={style.logo}
         />

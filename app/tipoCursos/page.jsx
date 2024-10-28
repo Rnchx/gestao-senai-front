@@ -8,24 +8,22 @@ import { useAuth } from '../components/authContext/user';
 
 export default function TipoCursos() {
     const { isAuthenticated, authToken } = useAuth();
-    const [loading, setLoading] = useState(true); // Adiciona estado de carregamento
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
-        // Esperar o token ser carregado antes de verificar
         if (authToken === null) {
             const storedToken = localStorage.getItem('authToken');
             if (!storedToken) {
                 router.push('/');
             } else {
-                setLoading(false); // Token existe, carregamento completo
+                setLoading(false);
             }
         } else {
-            setLoading(false); // Autenticado
+            setLoading(false);
         }
     }, [authToken, router]);
 
-    // Mostrar "Carregando..." enquanto verifica o token
     if (loading) {
         return <p>Carregando...</p>;
     }
@@ -35,24 +33,24 @@ export default function TipoCursos() {
             <SecondHeader />
             <div className={style.page}>
                 <div className={style.overlay}>
-                    <a href="">
-                    <div className={style.container}>
-                        <h1 className={style.text}>Itinerário formativo</h1>
-                        <img className={style.img} src="caca.png" alt="icone" />
+                    <a className={style.linkImage} href="/eachTypeOfCurse/itinerario-formativo">
+                        <div className={style.container}>
+                            <h1 className={style.text}>Itinerário Formativo</h1>
+                            <img className={style.img} src="caca.png" alt="icone" />
                         </div>
                     </a>
 
-                    <a href="">
-                    <div className={style.container}>
-                        <h1 className={style.text}>Técnico</h1>
-                        <img className={style.img} src="iconeTecnico.png" alt="icone" />
+                    <a className={style.linkImage} href="/eachTypeOfCurse/tecnico">
+                        <div className={style.container}>
+                            <h1 className={style.text}>Técnico</h1>
+                            <img className={style.img} src="iconeTecnico.png" alt="icone" />
                         </div>
                     </a>
 
-                    <a href="">
-                    <div className={style.container}>
-                        <h1 className={style.text}>Industrial</h1>
-                        <img className={style.img} src="solucao.png" alt="icone" />
+                    <a className={style.linkImage} href="/eachTypeOfCurse/industrial">
+                        <div className={style.container}>
+                            <h1 className={style.text}>Industrial</h1>
+                            <img className={style.img} src="solucao.png" alt="icone" />
                         </div>
                     </a>
                 </div>
