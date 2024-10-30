@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+'use client'
+
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Armario from '../components/armarios';
-import Modal from '../components/modal';
-import '../armarios/armarios.modules.css';
+import Locker from '../components/armarios/armarios';
+import Modal from '../components/modal/Modal';
+import style from './page.module.css';
 
 const Armario = () => {
   const [lockers, setLockers] = useState([]);
@@ -65,7 +67,7 @@ const Armario = () => {
       </header>
       <div className="locker-container">
         {lockers.map((locker) => (
-          <Armario
+          <Locker
             key={locker.id}
             locker={locker}
             onClick={() => openModal(locker.id)}

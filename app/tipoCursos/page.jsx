@@ -2,31 +2,23 @@
 
 import style from './tipoCursos.module.css';
 import SecondHeader from '../components/header2/SecondHeader';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../components/authContext/user';
 
 export default function TipoCursos() {
-    const { isAuthenticated, authToken } = useAuth();
-    const [loading, setLoading] = useState(true);
-    const router = useRouter();
+    // const { isAuthenticated, loading } = useAuth();
+    // const router = useRouter();
 
-    useEffect(() => {
-        if (authToken === null) {
-            const storedToken = localStorage.getItem('authToken');
-            if (!storedToken) {
-                router.push('/');
-            } else {
-                setLoading(false);
-            }
-        } else {
-            setLoading(false);
-        }
-    }, [authToken, router]);
+    // useEffect(() => {
+    //     if (!loading && !isAuthenticated()) {
+    //         router.push('/');
+    //     }
+    // }, [isAuthenticated, loading, router]);
 
-    if (loading) {
-        return <p>Carregando...</p>;
-    }
+    // if (loading) {
+    //     return <p>Carregando...</p>;
+    // }
 
     return (
         <div>

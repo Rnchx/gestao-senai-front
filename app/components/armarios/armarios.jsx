@@ -1,5 +1,7 @@
+'use-client';
+
 import React from 'react';
-import './Locker.css';
+import style from './armarios.module.css';
 
 const Locker = ({ locker, onClick }) => {
   return (

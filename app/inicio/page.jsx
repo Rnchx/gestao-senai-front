@@ -8,7 +8,6 @@ import SecondHeader from '../components/header2/SecondHeader';
 
 export default function Home() {
     const { isAuthenticated } = useAuth();
-    console.log(isAuthenticated);
 
     const router = useRouter();
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Modal.css';
+import style from './modal.module.css'
 
 const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
   const [studentName, setStudentName] = useState('');

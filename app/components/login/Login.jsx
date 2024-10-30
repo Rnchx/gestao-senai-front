@@ -9,11 +9,13 @@ export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const logIn = async (cpf, password) => {
+        const api = process.env.NEXT_PUBLIC_LOGIN
+
         setError(null);
         setIsLoading(true);
 
         try {
-            const response = await fetch(process.env.login, {
+            const response = await fetch(api, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -28,12 +30,12 @@ export const useLogin = () => {
             const data = await response.json();
             const token = data.token;
 
-            login(token); // Salva o token no contexto
+            login(token);
 
-            return true; // Login bem-sucedido
+            return true;
         } catch (err) {
             setError(err.message);
-            return false; // Falha no login
+            return false;
         } finally {
             setIsLoading(false);
         }
