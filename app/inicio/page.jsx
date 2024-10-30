@@ -30,7 +30,7 @@ export default function Home() {
                         </div>
                     </a>
 
-                    <a className={style.linkContainer} href="../tipoCursos">
+                    <a className={style.linkContainer} href="../armarios">
                         <div className={style.container}>
                             <h1 className={style.text}>AAPM</h1>
                             <img className={style.img} src="AAPM.png" alt="icone" />
