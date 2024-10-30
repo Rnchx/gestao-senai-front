@@ -3,7 +3,7 @@
 import React from 'react';
 import style from './armarios.module.css';
 
-const Locker = ({ locker, onClick }) => {
+const Armario = ({ locker, onClick }) => {
   return (
     <div
       className={`locker ${locker.occupationStatus === 'ocupado' ? 'occupied' : 'available'}`}
@@ -14,4 +14,4 @@ const Locker = ({ locker, onClick }) => {
   );
 };
 
-export default Locker;
+export default Armario;
