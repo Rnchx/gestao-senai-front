@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Locker from '../components/armarios/armarios';
+import Armarios from '../components/armarios/armarios';
 import Modal from '../components/modal/Modal';
 import style from './page.module.css';
 
@@ -12,23 +12,29 @@ const Armario = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("Fetching lockers");
     fetchLockers();
   }, []);
 
   const fetchLockers = async () => {
     try {
-      const response = await axios.get('/api/lockers');
-      setLockers(response.data.lockers);
+      setLoading(true);
+      const response = await axios.get('/lockers'); // Replace with your actual API endpoint
+      setLockers(response.data.lockers || []);
       setLoading(false);
     } catch (error) {
       console.error('Erro ao buscar armários:', error);
+      setLoading(false);
+      setLockers([]);
     }
   };
 
+
   const openModal = async (id) => {
     try {
-      const response = await axios.get(`/api/lockers/${id}`);
-      setSelectedLocker(response.data.lockers);
+      setSelectedLocker(null); // Reset selected locker before fetching new data
+      const response = await axios.get('lockers/${id}');
+      setSelectedLocker(response.data.locker); // Update selected locker state
     } catch (error) {
       console.error('Erro ao buscar informações do armário:', error);
     }
@@ -66,13 +72,22 @@ const Armario = () => {
         <h1>SENAI</h1>
       </header>
       <div className="locker-container">
-        {lockers.map((locker) => (
-          <Locker
-            key={locker.id}
-            locker={locker}
-            onClick={() => openModal(locker.id)}
-          />
-        ))}
+      {console.log("Rendering lockers:", lockers)}
+      {lockers && Array.isArray(lockers) && lockers.length > 0 ? (
+        lockers.map((locker) => {
+          console.log("Rendering Armarios component", locker);
+          return (
+            <Armarios
+              key={locker.id}
+              locker={locker}
+              onClick={() => openModal(locker.id)}
+            />
+
+            );
+          })
+        ) : (
+          <p>Não há armários disponíveis</p>
+        )}
       </div>
       {selectedLocker && (
         <Modal
