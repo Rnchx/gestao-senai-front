@@ -1,0 +1,56 @@
+.containerFilters {
+  display: flex;
+}
+
+.titleCourse {
+color: #DA251C;
+text-decoration: underline;
+font-size: 15px;
+margin: 1rem;
+}
+
+.buttonsFilter {
+  margin: 1rem;
+  border: none;
+  background-color: #DA251C;
+  padding: 3px;
+  color: white;
+  border-radius: 6px;
+}
+
+.buttonsFilter:hover {
+  cursor: pointer;
+}
+
+.containerCards {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.alunoContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  justify-items: center;
+}
+
+.alunoCard {
+  background-color: rgb(225, 225, 225);
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+}
+
+.imageStudent {
+  width: 130px;
+  height: 130px;
+}
+
+.nameStudent {
+  text-align: center;
+}
