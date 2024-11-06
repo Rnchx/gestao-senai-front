@@ -29,11 +29,11 @@
   background: rgba(249, 247, 247, 0.8);
   padding: 20px;
   border-radius: 20px;
-  width: 250px;
+  width: 300px;
   opacity: 1;
   margin-right: -130px;
-  box-shadow: 1px 4px 8px rgba(14, 13, 13, 0.427);
-  height: 135px;
+  box-shadow: 1px 4px 8px rgba(10, 10, 10, 0.427);
+  height: 250px;
 }
 
 .password {
@@ -71,7 +71,8 @@
   width: 100px;
   border-radius: 50px;
   margin-top: 10px;
-  margin-left: 55px;
+  margin-left: 80px;
+  align-items: center;
 }
 
 .loginBox button:hover {
@@ -80,9 +81,7 @@
 }
 .h2 {
   text-align: center;
-  margin-right: -130px;
   color: #ef1919;
-  margin-bottom: -40px;
 }
 
 .containerMessage {
