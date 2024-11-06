@@ -53,6 +53,10 @@ justify-content: center;
   text-align: center;
 }
 
+.alunoCard:hover {
+  cursor: pointer;
+}
+
 .imageStudent {
   width: 130px;
   height: 130px;

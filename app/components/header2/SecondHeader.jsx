@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import style from './secondHeader.module.css';
+import { FaHome } from "react-icons/fa";
 
 const SecondHeader = () => {
   return (
@@ -55,6 +56,15 @@ const SecondHeader = () => {
         width={300}
         className={style.logo}
       />
+
+      <a className={style.linkPage} href="../../inicio">
+        <button className={style.buttonHeader}>
+          <p>
+            <FaHome />
+          </p>
+        </button>
+      </a>
+
     </div>
   );
 }

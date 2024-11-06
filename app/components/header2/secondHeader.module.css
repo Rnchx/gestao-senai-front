@@ -19,3 +19,23 @@
     align-items: center;
     justify-content: center;
   }
+
+  .buttonHeader {
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 3px;
+  }
+
+  .buttonHeader p {
+    color: #DA251C;
+    
+  }
+
+  .buttonHeader:hover {
+    cursor: pointer;
+  }
+
+  .linkPage {
+    text-decoration: none;
+  }

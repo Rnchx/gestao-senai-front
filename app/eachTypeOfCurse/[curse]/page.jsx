@@ -4,7 +4,7 @@ import style from './curse.module.css';
 import SecondHeader from '../../components/header2/SecondHeader';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import PrivateRoute from '@/app/components/privateRouter/PrivateRouter';
 
 export default function EachCurse() {
@@ -12,9 +12,11 @@ export default function EachCurse() {
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [showFilterStudents, setShowFilterStudents] = useState(false);
   const [error, setError] = useState(null);
+  const [activeFilter, setActiveFilter] = useState(null);
 
   const searchParams = useSearchParams();
   const curso = searchParams.get('curso');
+  const router = useRouter();
 
   const apiUrls = {
     'Técnico': process.env.NEXT_PUBLIC_API_GET_STUDENTS_TECNICO,
@@ -57,10 +59,17 @@ export default function EachCurse() {
     }
   }, [curso]);
 
+  const handleShowAllStudents = () => {
+    setFilteredStudents(students);
+    setShowFilterStudents(false);
+    setActiveFilter(null);
+  };
+
   const handleShowAapmContributors = () => {
     const aapmContributors = students.filter(student => student.aapmstatus);
     setFilteredStudents(aapmContributors);
     setShowFilterStudents(true);
+    setActiveFilter('aapmContributors');
   };
 
   const filterByInternshipStatus = (status) => {
@@ -69,20 +78,23 @@ export default function EachCurse() {
     );
     setFilteredStudents(filteredStudents);
     setShowFilterStudents(false);
-  };
-
-  const handleShowAllStudents = () => {
-    setFilteredStudents(students);
-    setShowFilterStudents(false);
+    setActiveFilter(`internshipStatus-${status}`);
   };
 
   const filterByAge = () => {
     const currentYear = new Date().getFullYear();
-    const eighteenYearOlds = students.filter(
-      (student) => currentYear - new Date(student.dateofbirth).getFullYear() === 18
-    );
+    const eighteenYearOlds = students.filter((student) => {
+      const [day, month, year] = student.dateofbirth.split('/');
+      const birthYear = parseInt(year);
+      return currentYear - birthYear === 18;
+    });
     setFilteredStudents(eighteenYearOlds);
     setShowFilterStudents(false);
+    setActiveFilter('age18');
+  };
+
+  const handleStudentCardClick = (student) => {
+    router.push(`/detailingStudent?id=${student.id}`);
   };
 
   return (
@@ -93,34 +105,40 @@ export default function EachCurse() {
           <h1 className={style.titleCourse}> Alunos - {curso}</h1>
 
           <button
-            className={`${style.buttonsFilter} ${!showFilterStudents ? style.activeFilter : ''}`}
+            className={`${style.buttonsFilter} ${activeFilter === null ? style.activeFilter : ''}`}
             onClick={handleShowAllStudents}>Todos</button>
 
-          <button className={style.buttonsFilter} onClick={filterByAge}>
+          <button className={`${style.buttonsFilter} ${activeFilter === 'age18' ? style.activeFilter : ''}`} onClick={filterByAge}>
             18 anos
           </button>
 
-          <button className={style.buttonsFilter} onClick={() => filterByInternshipStatus(true)}>
-            Aprendiz
+          <button className={`${style.buttonsFilter} ${activeFilter === 'internshipStatus-true' ? style.activeFilter : ''}`} onClick={() => filterByInternshipStatus(true)}>
+            Disponível para estágio
           </button>
 
-          <button className={style.buttonsFilter} onClick={() => filterByInternshipStatus(true)}>
+          {/* <button className={`${style.buttonsFilter} ${activeFilter === 'internshipStatus-true' ? style.activeFilter : ''}`} onClick={() => filterByInternshipStatus(true)}>
             Estagiário
-          </button>
+          </button> */}
 
           <button
-            className={`${style.buttonsFilter} ${showFilterStudents ? style.activeFilter : ''}`}
+            className={`${style.buttonsFilter} ${activeFilter === 'aapmContributors' ? style.activeFilter : ''}`}
             onClick={handleShowAapmContributors}
           >
             Contribuintes AAPM
           </button>
+
         </div>
+        
         <div className={style.containerCards}>
           {error && <p>{error}</p>}
           <div className={style.alunoContainer}>
             {filteredStudents.length > 0 ? (
               filteredStudents.map((student) => (
-                <div key={student.id} className={style.alunoCard}>
+                <div
+                  key={student.id}
+                  className={style.alunoCard}
+                  onClick={() => handleStudentCardClick(student)}
+                >
                   <img className={style.imageStudent} src={student.carometer} alt="foto do aluno" />
                   <p className={style.nameStudent}><b>{student.name}</b></p>
                 </div>
