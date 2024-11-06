@@ -2,25 +2,17 @@
 
 import style from './tipoCursos.module.css';
 import SecondHeader from '../components/header2/SecondHeader';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '../components/authContext/user';
+import PrivateRoute from '../components/privateRouter/PrivateRouter';
+
+// import { useEffect } from 'react';
+// import { useRouter } from 'next/navigation';
+// import { useAuth } from '../components/authContext/user';
 
 export default function TipoCursos() {
-    // const { isAuthenticated, loading } = useAuth();
-    // const router = useRouter();
 
-    // useEffect(() => {
-    //     if (!loading && !isAuthenticated()) {
-    //         router.push('/');
-    //     }
-    // }, [isAuthenticated, loading, router]);
-
-    // if (loading) {
-    //     return <p>Carregando...</p>;
-    // }
 
     return (
+        <PrivateRoute>
         <div>
             <SecondHeader />
             <div className={style.page}>
@@ -47,6 +39,7 @@ export default function TipoCursos() {
                     </a>
                 </div>
             </div>
-        </div>
+            </div>
+        </PrivateRoute>
     );
 }

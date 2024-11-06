@@ -1,23 +1,18 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '../components/authContext/user';
+// import { useEffect } from 'react';
+// import { useRouter } from 'next/navigation';
+// import { useAuth } from '../components/authContext/user';
+
+import PrivateRoute from '../components/privateRouter/PrivateRouter';
 import style from './inicio.module.css';
 import SecondHeader from '../components/header2/SecondHeader';
 
 export default function Home() {
-    const { isAuthenticated } = useAuth();
 
-    const router = useRouter();
-
-    useEffect(() => {
-        if (!isAuthenticated()) {
-            router.push('/');
-        }
-    }, [isAuthenticated, router]);
 
     return (
+        <PrivateRoute>
         <div>
             <SecondHeader />
             <div className={style.page}>
@@ -39,6 +34,7 @@ export default function Home() {
 
                 </div>
             </div>
-        </div>
+            </div>
+            </PrivateRoute>
     );
 }

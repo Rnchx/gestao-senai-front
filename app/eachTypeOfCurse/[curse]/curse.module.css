@@ -20,6 +20,13 @@ margin: 1rem;
 
 .buttonsFilter:hover {
   cursor: pointer;
+  background-color: #d3d3d3;
+  color: #DA251C;
+}
+
+.activeFilter {
+  background-color: #d3d3d3 !important;
+  color: #DA251C !important;
 }
 
 .containerCards {
@@ -38,7 +45,7 @@ justify-content: center;
 }
 
 .alunoCard {
-  background-color: rgb(225, 225, 225);
+  background-color: #d3d3d3;
   padding: 1rem;
   border-radius: 5px;
   width: 100%;

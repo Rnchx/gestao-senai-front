@@ -1,21 +1,62 @@
-"use client"  
+'use client';
 
+import Image from 'next/image';
 import style from './secondHeader.module.css';
 
 const SecondHeader = () => {
   return (
-      <div className={style.headerContainer}>
-        
-        <img src="Logo.png" alt="Logo da Empresa" height={150} width={300} className={style.logo}/>
-        <img src="Logo.png" alt="Logo da Empresa" height={150} width={300} className={style.logo}/>
-        <img src="Logo.png" alt="Logo da Empresa" height={150} width={300} className={style.logo}/>
-        <img src="Logo.png" alt="Logo da Empresa" height={150} width={300} className={style.logo}/>
-        <img src="Logo.png" alt="Logo da Empresa" height={150} width={300} className={style.logo}/>
-        <img src="Logo.png" alt="Logo da Empresa" height={150} width={300} className={style.logo}/>
-        <img src="Logo.png" alt="Logo da Empresa" height={150} width={300} className={style.logo}/>
-       
-      </div>
-  )
+    <div className={style.headerContainer}>
+      <Image
+        src="/Logo.png"
+        alt="Logo da Empresa"
+        height={150}
+        width={300}
+        className={style.logo}
+      />
+      <Image
+        src="/Logo.png"
+        alt="Logo da Empresa"
+        height={150}
+        width={300}
+        className={style.logo}
+      />
+      <Image
+        src="/Logo.png"
+        alt="Logo da Empresa"
+        height={150}
+        width={300}
+        className={style.logo}
+      />
+      <Image
+        src="/Logo.png"
+        alt="Logo da Empresa"
+        height={150}
+        width={300}
+        className={style.logo}
+      />
+      <Image
+        src="/Logo.png"
+        alt="Logo da Empresa"
+        height={150}
+        width={300}
+        className={style.logo}
+      />
+      <Image
+        src="/Logo.png"
+        alt="Logo da Empresa"
+        height={150}
+        width={300}
+        className={style.logo}
+      />
+      <Image
+        src="/Logo.png"
+        alt="Logo da Empresa"
+        height={150}
+        width={300}
+        className={style.logo}
+      />
+    </div>
+  );
 }
 
-export default SecondHeader
+export default SecondHeader;

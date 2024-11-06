@@ -5,11 +5,12 @@ import SecondHeader from '../../components/header2/SecondHeader';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-
-import imagem from "../../../public/AAPM.png"
+import PrivateRoute from '@/app/components/privateRouter/PrivateRouter';
 
 export default function EachCurse() {
   const [students, setStudents] = useState([]);
+  const [filteredStudents, setFilteredStudents] = useState([]);
+  const [showFilterStudents, setShowFilterStudents] = useState(false);
   const [error, setError] = useState(null);
 
   const searchParams = useSearchParams();
@@ -23,11 +24,27 @@ export default function EachCurse() {
 
   const fetchStudents = async (url) => {
     try {
-      const response = await axios.get(url);
+      const token = localStorage.getItem('authToken');
+
+      if (!token) {
+        throw new Error('Token não encontrado');
+      }
+
+      const response = await axios.get(url, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
       setStudents(response.data.students || response.data);
+      setFilteredStudents(response.data.students || response.data);
     } catch (error) {
       console.error(error);
-      setError('Erro ao carregar os dados dos estudantes');
+      if (error.message === 'Token não encontrado') {
+        setError('Usuário não autenticado');
+      } else {
+        setError('Erro ao carregar os dados dos estudantes');
+      }
     }
   };
 
@@ -40,41 +57,80 @@ export default function EachCurse() {
     }
   }, [curso]);
 
+  const handleShowAapmContributors = () => {
+    const aapmContributors = students.filter(student => student.aapmstatus);
+    setFilteredStudents(aapmContributors);
+    setShowFilterStudents(true);
+  };
+
+  const filterByInternshipStatus = (status) => {
+    const filteredStudents = students.filter(
+      (student) => student.internshipstatus === status
+    );
+    setFilteredStudents(filteredStudents);
+    setShowFilterStudents(false);
+  };
+
+  const handleShowAllStudents = () => {
+    setFilteredStudents(students);
+    setShowFilterStudents(false);
+  };
+
+  const filterByAge = () => {
+    const currentYear = new Date().getFullYear();
+    const eighteenYearOlds = students.filter(
+      (student) => currentYear - new Date(student.dateofbirth).getFullYear() === 18
+    );
+    setFilteredStudents(eighteenYearOlds);
+    setShowFilterStudents(false);
+  };
+
   return (
-    <div>
-      <SecondHeader />
-      <img src={imagem} alt="foto teste" />
-      <div className={style.containerFilters}>
-        <h1 className={style.titleCourse}> Alunos - {curso}</h1>
+    <PrivateRoute>
+      <div>
+        <SecondHeader />
+        <div className={style.containerFilters}>
+          <h1 className={style.titleCourse}> Alunos - {curso}</h1>
 
-        <button className={style.buttonsFilter}>18 anos</button>
-        <button className={style.buttonsFilter}>Aprendiz</button>  
-        <button className={style.buttonsFilter}>Estagiário</button>
-          <button className={style.buttonsFilter}>Contribuentes AAPM</button>
+          <button
+            className={`${style.buttonsFilter} ${!showFilterStudents ? style.activeFilter : ''}`}
+            onClick={handleShowAllStudents}>Todos</button>
 
-      </div>
-      <div className={style.containerCards}>
-        {error && <p>{error}</p>}
-        <div className={style.alunoContainer}>
-          {students.length > 0 ? (
-            students.map((student) => (
-              <div key={student.id} className={style.alunoCard}>
-                <img className={style.imageStudent} src={student.carometer} alt="foto do aluno" />
-                <p className={style.nameStudent}><b>{student.name}</b></p>
-                {/* <p>{student.dateofbirth}</p>
-                <p>{student.studentclass}</p>
-                <p>{student.coursetype}</p>
-                <p>Participante da AAPM: {student.aapmstatus ? "Sim" : "Não"}</p>
-                {console.log(student.aapmstatus)}
-                <p>Disponível para estágio: {student.internshipstatus ? "Sim" : "Não"}</p>
-                {console.log(student.internshipstatus)} */}
-              </div>
-            ))
-          ) : (
-            <p>Carregando estudantes...</p>
-          )}
+          <button className={style.buttonsFilter} onClick={filterByAge}>
+            18 anos
+          </button>
+
+          <button className={style.buttonsFilter} onClick={() => filterByInternshipStatus(true)}>
+            Aprendiz
+          </button>
+
+          <button className={style.buttonsFilter} onClick={() => filterByInternshipStatus(true)}>
+            Estagiário
+          </button>
+
+          <button
+            className={`${style.buttonsFilter} ${showFilterStudents ? style.activeFilter : ''}`}
+            onClick={handleShowAapmContributors}
+          >
+            Contribuintes AAPM
+          </button>
         </div>
+        <div className={style.containerCards}>
+          {error && <p>{error}</p>}
+          <div className={style.alunoContainer}>
+            {filteredStudents.length > 0 ? (
+              filteredStudents.map((student) => (
+                <div key={student.id} className={style.alunoCard}>
+                  <img className={style.imageStudent} src={student.carometer} alt="foto do aluno" />
+                  <p className={style.nameStudent}><b>{student.name}</b></p>
+                </div>
+              ))
+            ) : (
+              <p>Carregando estudantes...</p>
+            )}
           </div>
+        </div>
       </div>
+    </PrivateRoute>
   );
 }
