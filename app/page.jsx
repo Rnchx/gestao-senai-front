@@ -29,7 +29,7 @@ export default function Login() {
       <div className={style.page}>
         <div className={style.overlay}>
           <div className={style.loginBox}>
-            <h2 className={style.h2}>Login</h2>
+            <h2 className={style.h2}>Entrar</h2>
             <div className={style.inputBox}>
               <form onSubmit={handleSubmit}>
                 <input
