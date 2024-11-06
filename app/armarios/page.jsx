@@ -16,10 +16,10 @@ const Armario = () => {
     fetchLockers();
   }, []);
 
-  const fetchLockers = async () => {
+  const fetchLockers = async (getLockers) => {
     try {
       setLoading(true);
-      const response = await axios.get('/lockers'); // Replace with your actual API endpoint
+      const response = await axios.get(getLockers); // Replace with your actual API endpoint
       setLockers(response.data.lockers || []);
       setLoading(false);
     } catch (error) {
@@ -30,10 +30,10 @@ const Armario = () => {
   };
 
 
-  const openModal = async (id) => {
+  const openModal = async (getLockersById) => {
     try {
       setSelectedLocker(null); // Reset selected locker before fetching new data
-      const response = await axios.get('lockers/${id}');
+      const response = await axios.get(getLockersById);
       setSelectedLocker(response.data.locker); // Update selected locker state
     } catch (error) {
       console.error('Erro ao buscar informações do armário:', error);
@@ -42,9 +42,9 @@ const Armario = () => {
 
   const closeModal = () => setSelectedLocker(null);
 
-  const handleAssign = async (id, studentName) => {
+  const handleAssign = async (assignStudentToLocker, studentName) => {
     try {
-      await axios.post(`/api/lockers/${id}/assign`, { studentName });
+      await axios.post(assignStudentToLocker, { studentName });
       fetchLockers();
       closeModal();
     } catch (error) {
@@ -52,9 +52,9 @@ const Armario = () => {
     }
   };
 
-  const handleUnassign = async (id) => {
+  const handleUnassign = async (unassignStudentFromLocker) => {
     try {
-      await axios.post(`/api/lockers/${id}/unassign`);
+      await axios.post(unassignStudentFromLocker);
       fetchLockers();
       closeModal();
     } catch (error) {
