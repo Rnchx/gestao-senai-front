@@ -17,8 +17,9 @@ const ArmarioPage = () => {
 
   const fetchLockers = async () => {
     try {
-      const response = await axios.get('/api/lockers');
-      setLockers(response.data);
+      const response = await axios.get("http://10.88.199.205:4000/lockers");
+      setLockers(response.data.lockers);
+      console.log(response.data) 
     } catch (error) {
       setError('Erro ao buscar os armários');
       console.error(error);
@@ -64,15 +65,17 @@ const ArmarioPage = () => {
         <div>Carregando...</div>
       ) : error ? (
         <div>Erro: {error}</div>
-      ) : (
+      ) : lockers && lockers.length > 0 ? (
         <div>
           {lockers.map((locker) => (
-            <ArmarioCard key={locker.id} locker={locker} onClick={handleLockerClick} />
+            <Armario key={locker.id} locker={locker} onClick={handleLockerClick} />
           ))}
         </div>
+      ) : (
+        <div>Nenhum armário encontrado.</div>
       )}
       {selectedLocker && (
-        <ArmarioModal
+        <Modal
           locker={selectedLocker}
           onClose={handleModalClose}
           onAssign={handleAssignLocker}
