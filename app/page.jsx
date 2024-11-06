@@ -15,7 +15,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const loginSuccess = await logIn(cpf, password);
 
     if (loginSuccess) {
@@ -29,8 +29,9 @@ export default function Login() {
       <div className={style.page}>
         <div className={style.overlay}>
           <div className={style.loginBox}>
-            <h2 className={style.h2}>Entrar</h2>
+
             <div className={style.inputBox}>
+              <h2 className={style.h2}>Entrar</h2>
               <form onSubmit={handleSubmit}>
                 <input
                   placeholder="CPF"
@@ -50,8 +51,8 @@ export default function Login() {
                 />
 
                 <div className={style.containerMessage}>
-                    {error && <p className={style.messageError}>{error}</p>}
-                    {isLoading && <p className={style.messageSucess}>carregando...</p>}
+                  {error && <p className={style.messageError}>{error}</p>}
+                  {isLoading && <p className={style.messageSucess}>carregando...</p>}
                 </div>
                 <button type="submit">Entrar</button>
               </form>
