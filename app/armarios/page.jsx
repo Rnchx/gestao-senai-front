@@ -16,7 +16,7 @@ const Armario = () => {
     fetchLockers();
   }, []);
 
-  const fetchLockers = async () => {
+  const fetchLockers = async (getLockers) => {
     try {
       setLoading(true);
       const response = await axios.get(getLockers); // Replace with your actual API endpoint
@@ -30,7 +30,7 @@ const Armario = () => {
   };
 
 
-  const openModal = async (id) => {
+  const openModal = async (getLockersById) => {
     try {
       setSelectedLocker(null); // Reset selected locker before fetching new data
       const response = await axios.get(getLockersById);
@@ -42,7 +42,7 @@ const Armario = () => {
 
   const closeModal = () => setSelectedLocker(null);
 
-  const handleAssign = async (studentName) => {
+  const handleAssign = async (assignStudentToLocker, studentName) => {
     try {
       await axios.post(assignStudentToLocker, { studentName });
       fetchLockers();
@@ -52,7 +52,7 @@ const Armario = () => {
     }
   };
 
-  const handleUnassign = async (id) => {
+  const handleUnassign = async (unassignStudentFromLocker) => {
     try {
       await axios.post(unassignStudentFromLocker);
       fetchLockers();
