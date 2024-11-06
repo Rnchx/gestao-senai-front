@@ -31,7 +31,7 @@ export default function Login() {
           <div className={style.loginBox}>
 
             <div className={style.inputBox}>
-              <h2 className={style.h2}>Entrar</h2>
+              <h2 className={style.h2}>Login</h2>
               <form onSubmit={handleSubmit}>
                 <input
                   placeholder="CPF"
