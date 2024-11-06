@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Armario from '../components/armarios/armarios';
 import Modal from '../components/modal/Modal';
+import PrivateRoute from '../components/privateRouter/PrivateRouter';
+import style from './page.module.css'
 
 const ArmarioPage = () => {
   const [lockers, setLockers] = useState([]);
@@ -16,13 +18,28 @@ const ArmarioPage = () => {
   }, []);
 
   const fetchLockers = async () => {
+
+    const token = localStorage.getItem('authToken');
+
+    if (!token) {
+      throw new Error('Token não encontrado');
+    }
+
     try {
-      const response = await axios.get("http://10.88.199.205:4000/lockers");
+      const response = await axios.get("http://10.88.199.205:4000/lockers", {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
       setLockers(response.data.lockers);
       console.log(response.data) 
     } catch (error) {
-      setError('Erro ao buscar os armários');
-      console.error(error);
+      if (error.message === 'Token não encontrado') {
+        setError('Armário não autenticado');
+      } else {
+        setError('Erro ao carregar os dados dos armários');
+      }
     } finally {
       setLoading(false);
     }
@@ -59,6 +76,7 @@ const ArmarioPage = () => {
   };
 
   return (
+    <PrivateRoute>
     <div>
       <h1>Armários</h1>
       {loading ? (
@@ -66,7 +84,7 @@ const ArmarioPage = () => {
       ) : error ? (
         <div>Erro: {error}</div>
       ) : lockers && lockers.length > 0 ? (
-        <div>
+        <div className={style.home}>
           {lockers.map((locker) => (
             <Armario key={locker.id} locker={locker} onClick={handleLockerClick} />
           ))}
@@ -83,6 +101,8 @@ const ArmarioPage = () => {
         />
       )}
     </div>
+    </PrivateRoute>
+
   );
 };
 
