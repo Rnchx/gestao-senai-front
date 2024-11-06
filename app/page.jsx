@@ -34,7 +34,7 @@ export default function Login() {
               <h2 className={style.h2}>Login</h2>
               <form onSubmit={handleSubmit}>
                 <input
-                  placeholder="CPF"
+                  placeholder="👤  CPF"
                   type="text"
                   id="cpf"
                   name="cpf"
@@ -42,7 +42,7 @@ export default function Login() {
                   onChange={(e) => setCPF(e.target.value)}
                 />
                 <input
-                  placeholder="Senha"
+                  placeholder="🔑  Senha"
                   type="password"
                   id="password"
                   name="password"
