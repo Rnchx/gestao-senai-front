@@ -1,104 +1,86 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Armarios from '../components/armarios/armarios';
+import Armario from '../components/armarios/armarios';
 import Modal from '../components/modal/Modal';
-import style from './page.module.css';
 
-const Armario = () => {
+const ArmarioPage = () => {
   const [lockers, setLockers] = useState([]);
   const [selectedLocker, setSelectedLocker] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log("Fetching lockers");
     fetchLockers();
   }, []);
 
-  const fetchLockers = async (getLockers) => {
+  const fetchLockers = async () => {
     try {
-      setLoading(true);
-      const response = await axios.get(getLockers); // Replace with your actual API endpoint
-      setLockers(response.data.lockers || []);
+      const response = await axios.get('/api/lockers');
+      setLockers(response.data);
+    } catch (error) {
+      setError('Erro ao buscar os armários');
+      console.error(error);
+    } finally {
       setLoading(false);
-    } catch (error) {
-      console.error('Erro ao buscar armários:', error);
-      setLoading(false);
-      setLockers([]);
     }
   };
 
-
-  const openModal = async (getLockersById) => {
-    try {
-      setSelectedLocker(null); // Reset selected locker before fetching new data
-      const response = await axios.get(getLockersById);
-      setSelectedLocker(response.data.locker); // Update selected locker state
-    } catch (error) {
-      console.error('Erro ao buscar informações do armário:', error);
-    }
+  const handleLockerClick = (locker) => {
+    setSelectedLocker(locker);
   };
 
-  const closeModal = () => setSelectedLocker(null);
+  const handleModalClose = () => {
+    setSelectedLocker(null);
+  };
 
-  const handleAssign = async (assignStudentToLocker, studentName) => {
+  const handleAssignLocker = async (studentName) => {
     try {
-      await axios.post(assignStudentToLocker, { studentName });
+      await axios.post(`/api/lockers/${selectedLocker.id}/assign`, { studentName });
       fetchLockers();
-      closeModal();
+      handleModalClose();
     } catch (error) {
-      console.error('Erro ao atribuir estudante ao armário:', error);
+      setError('Erro ao atribuir o armário');
+      console.error(error);
     }
   };
 
-  const handleUnassign = async (unassignStudentFromLocker) => {
+  const handleUnassignLocker = async () => {
     try {
-      await axios.post(unassignStudentFromLocker);
+      await axios.post(`/api/lockers/${selectedLocker.id}/unassign`);
       fetchLockers();
-      closeModal();
+      handleModalClose();
     } catch (error) {
-      console.error('Erro ao desocupar o armário:', error);
+      setError('Erro ao desocupar o armário');
+      console.error(error);
     }
   };
-
-  if (loading) {
-    return <div>Carregando...</div>;
-  }
 
   return (
-    <div className="app">
-      <header className="header">
-        <h1>SENAI</h1>
-      </header>
-      <div className="locker-container">
-      {console.log("Rendering lockers:", lockers)}
-      {lockers && Array.isArray(lockers) && lockers.length > 0 ? (
-        lockers.map((locker) => {
-          console.log("Rendering Armarios component", locker);
-          return (
-            <Armarios
-              key={locker.id}
-              locker={locker}
-              onClick={() => openModal(locker.id)}
-            />
-
-            );
-          })
-        ) : (
-          <p>Não há armários disponíveis</p>
-        )}
-      </div>
+    <div>
+      <h1>Armários</h1>
+      {loading ? (
+        <div>Carregando...</div>
+      ) : error ? (
+        <div>Erro: {error}</div>
+      ) : (
+        <div>
+          {lockers.map((locker) => (
+            <ArmarioCard key={locker.id} locker={locker} onClick={handleLockerClick} />
+          ))}
+        </div>
+      )}
       {selectedLocker && (
-        <Modal
+        <ArmarioModal
           locker={selectedLocker}
-          onClose={closeModal}
-          onAssign={handleAssign}
-          onUnassign={handleUnassign}
+          onClose={handleModalClose}
+          onAssign={handleAssignLocker}
+          onUnassign={handleUnassignLocker}
         />
       )}
     </div>
   );
 };
 
-export default Armario;
+export default ArmarioPage;
