@@ -13,33 +13,33 @@ const ArmarioPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const API_BASE_URL = "http://10.88.199.205:4000"; // Adicionada constante para a URL base
+
   useEffect(() => {
     fetchLockers();
   }, []);
 
   const fetchLockers = async () => {
-
     const token = localStorage.getItem('authToken');
 
     if (!token) {
-      throw new Error('Token não encontrado');
+      setError('Token não encontrado');
+      setLoading(false);
+      return;
     }
 
     try {
-      const response = await axios.get("http://10.88.199.205:4000/lockers", {
+      const response = await axios.get(`${API_BASE_URL}/lockers`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         }
       });
       setLockers(response.data.lockers);
-      console.log(response.data) 
+      setError(null);
     } catch (error) {
-      if (error.message === 'Token não encontrado') {
-        setError('Armário não autenticado');
-      } else {
-        setError('Erro ao carregar os dados dos armários');
-      }
+      setError('Erro ao carregar os dados dos armários');
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -53,21 +53,45 @@ const ArmarioPage = () => {
     setSelectedLocker(null);
   };
 
-  const handleAssignLocker = async (studentName) => {
+  const handleAssignLocker = async (lockerId, lockerOwner) => {
+    const token = localStorage.getItem('authToken');
     try {
-      await axios.post(`/api/lockers/${selectedLocker.id}/assign`, { studentName });
-      fetchLockers();
+      console.log('Atribuindo armário:', lockerId, lockerOwner);
+      const response = await axios.post(
+        `${API_BASE_URL}/lockers/${lockerId}/assign`,
+        {
+          nameOwner: lockerOwner.owner
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      console.log('Resposta da atribuição:', response.data); // Log para debug
+      await fetchLockers(); // Atualiza a lista de armários
       handleModalClose();
     } catch (error) {
-      setError('Erro ao atribuir o armário');
-      console.error(error);
+      console.error('Erro detalhado:', error.response || error); // Log detalhado do erro
+      setError(error.response?.data?.message || 'Erro ao atribuir o armário');
     }
   };
 
-  const handleUnassignLocker = async () => {
+  const handleUnassignLocker = async (lockerId) => {
+    const token = localStorage.getItem('authToken');
     try {
-      await axios.post(`/api/lockers/${selectedLocker.id}/unassign`);
-      fetchLockers();
+      await axios.post(
+        `${API_BASE_URL}/lockers/${lockerId}/unassign`,
+        {},
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      await fetchLockers();
       handleModalClose();
     } catch (error) {
       setError('Erro ao desocupar o armário');
@@ -77,32 +101,42 @@ const ArmarioPage = () => {
 
   return (
     <PrivateRoute>
-    <div>
-      <h1>Armários</h1>
-      {loading ? (
-        <div>Carregando...</div>
-      ) : error ? (
-        <div>Erro: {error}</div>
-      ) : lockers && lockers.length > 0 ? (
-        <div className={style.home}>
-          {lockers.map((locker) => (
-            <Armario key={locker.id} locker={locker} onClick={handleLockerClick} />
-          ))}
-        </div>
-      ) : (
-        <div>Nenhum armário encontrado.</div>
-      )}
-      {selectedLocker && (
-        <Modal
-          locker={selectedLocker}
-          onClose={handleModalClose}
-          onAssign={handleAssignLocker}
-          onUnassign={handleUnassignLocker}
-        />
-      )}
-    </div>
+      <div className="p-6">
+        <h1 className="text-2xl font-bold mb-6">Armários</h1>
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {error}
+          </div>
+        )}
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+          </div>
+        ) : lockers && lockers.length > 0 ? (
+          <div className={style.home}>
+            {lockers.map((locker) => (
+              <Armario
+                key={locker.id}
+                locker={locker}
+                onClick={() => handleLockerClick(locker)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center text-gray-600">
+            Nenhum armário encontrado.
+          </div>
+        )}
+        {selectedLocker && (
+          <Modal
+            locker={selectedLocker}
+            onClose={handleModalClose}
+            onAssign={handleAssignLocker}
+            onUnassign={handleUnassignLocker}
+          />
+        )}
+      </div>
     </PrivateRoute>
-
   );
 };
 

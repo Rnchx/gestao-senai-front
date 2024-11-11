@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import style from './secondHeader.module.css';
-import { FaHome } from "react-icons/fa";
+{/*import { FaHome } from "react-icons/fa";*/}
 
 const SecondHeader = () => {
   return (
@@ -60,7 +60,7 @@ const SecondHeader = () => {
       <a className={style.linkPage} href="../../inicio">
         <button className={style.buttonHeader}>
           <p>
-            <FaHome />
+            {/*<FaHome />*/}
           </p>
         </button>
       </a>
