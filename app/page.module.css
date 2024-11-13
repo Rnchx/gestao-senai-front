@@ -1,12 +1,10 @@
 .page {
-  height: 83vh;
-  width: 100%;
-  background-color: hsla(0, 0%, 100%, 0.7);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  height: 65vh;
 }
 
 .inputBox {
   align-items: center;
+  margin-top: 5vh;
 }
 
 .videoDiv video {
@@ -17,6 +15,7 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
+  overflow: scroll;
 }
 
 .loginBox {
@@ -25,18 +24,13 @@
   padding: 20px;
   background-color: #fcfafaf1;
   border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  
+  height: 49vh;
+  margin-top: 18vh;
 }
 
-
-
-
-
-
-
-
 .containerMessage {
-  margin-top: 10px;
+  margin-bottom: 2vh;
 }
 
 .messageError {
@@ -49,4 +43,40 @@
   color: #28a745;
   font-size: 14px;
   text-align: center;
+}
+
+.loginBox button {
+  padding: 2vh;
+  background-color: #e60000;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  align-items: center;
+}
+
+.loginBox button:hover {
+  background-color: #cc0000;
+  cursor: pointer;
+}
+
+.loginBox h2 {
+  text-align: center;
+  padding: 1vh;
+}
+
+.loginBox form {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginBox label {
+  margin-bottom: 5px;
+}
+
+.loginBox input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+  margin: 5px;
 }

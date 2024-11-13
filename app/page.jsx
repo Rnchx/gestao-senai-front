@@ -27,10 +27,9 @@ export default function Login() {
     <div className={style.container}>
       <Header />
       <div className={style.page}>
-        <div className={style.overlay}>
           <div className={style.videoDiv}>
             <video autoPlay loop muted className={style.backVideo}>
-              <source src="/fundo2.mp4" type="video/mp4" />
+              <source src="/fundo3.mp4" type="video/mp4" />
             </video>
           </div>
           <div className={style.loginBox}>
@@ -64,6 +63,5 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
