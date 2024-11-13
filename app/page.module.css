@@ -15,16 +15,14 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  overflow: scroll;
 }
 
 .loginBox {
-  max-width: 400px;
+  max-width: 350px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #fcfafaf1;
+  padding: 18px;
+  background-color: #fcfafaef;
   border-radius: 8px;
-  
   height: 49vh;
   margin-top: 18vh;
 }
@@ -79,4 +77,9 @@
   border: 1.5px solid #ccc;
   border-radius: 4px;
   margin: 5px;
+}
+
+.h2{
+  font-size: 4vh;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
