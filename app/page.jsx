@@ -24,12 +24,15 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <Header />
       <div className={style.page}>
-        <div className={style.overlay}>
+          <div className={style.videoDiv}>
+            <video autoPlay loop muted className={style.backVideo}>
+              <source src="/fundo3.mp4" type="video/mp4" />
+            </video>
+          </div>
           <div className={style.loginBox}>
-
             <div className={style.inputBox}>
               <h2 className={style.h2}>Login</h2>
               <form onSubmit={handleSubmit}>
@@ -52,7 +55,7 @@ export default function Login() {
 
                 <div className={style.containerMessage}>
                   {error && <p className={style.messageError}>{error}</p>}
-                  {isLoading && <p className={style.messageSucess}>carregando...</p>}
+                  {isLoading && <p className={style.messageSucess}>Carregando...</p>}
                 </div>
                 <button type="submit">Entrar</button>
               </form>
@@ -60,6 +63,5 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
