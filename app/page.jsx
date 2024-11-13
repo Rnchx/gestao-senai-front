@@ -26,11 +26,15 @@ export default function Login() {
   return (
     <div>
       <Header />
-      <video autoPlay loop muted className={style.backVideo}>
-        <source src="" type="" />
-      </video>
+
+
       <div className={style.page}>
         <div className={style.overlay}>
+          <div className={style.videoDiv}>
+            <video autoPlay loop muted className={style.backVideo}>
+              <source src="/fundo2.mp4" type="video/mp4" />
+            </video>
+          </div>
           <div className={style.loginBox}>
 
             <div className={style.inputBox}>
