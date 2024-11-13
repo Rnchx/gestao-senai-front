@@ -149,7 +149,7 @@ export default function EachCurse() {
             )}
           </div>
         </div>
-      </div>
+      </div>]
     </PrivateRoute>
   );
 }
