@@ -1,13 +1,15 @@
-.page{
-  height: 100%;
+.page {
+  height: 83vh;
   width: 100%;
+  background-color: hsla(0, 0%, 100%, 0.7);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
-.inputBox{
+.inputBox {
   align-items: center;
 }
 
-.videoDiv video{
+.videoDiv video {
   position: absolute;
   top: 0;
   left: 0;
@@ -17,13 +19,11 @@
   z-index: -1;
 }
 
-
-
 .loginBox {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f0f0f0f1;
+  background-color: #fcfafaf1;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
