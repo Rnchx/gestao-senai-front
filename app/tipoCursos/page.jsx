@@ -17,7 +17,7 @@ export default function TipoCursos() {
             <SecondHeader />
             <div className={style.page}>
                 <div className={style.overlay}>
-                    <a className={style.linkImage} href="/eachTypeOfCurse/itinerario-formativo?curso=Itinerário Formativo">
+                        <a className={style.linkImage} href="/eachTypeOfCurse/itinerario-formativo?curso=Itinerário Formativo">
                         <div className={style.container}>
                             <h1 className={style.text}>Itinerário Formativo</h1>
                             <img className={style.img} src="caca.png" alt="icone" />
