@@ -9,6 +9,7 @@ import PrivateRoute from '@/app/components/privateRouter/PrivateRouter';
 
 export default function EachCurse() {
   const [students, setStudents] = useState([]);
+  const [eachStudent, setEachStudent] = useState(null);
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [showFilterStudents, setShowFilterStudents] = useState(false);
   const [error, setError] = useState(null);
@@ -95,7 +96,16 @@ export default function EachCurse() {
   };
 
   const handleStudentCardClick = (student) => {
-    router.push(`/detailingStudent?id=${student.id}`);
+    router.push(`/detailingStudent?
+      id=${student.id}
+      &name=${student.name}
+      &dateofbirth=${student.dateofbirth}
+      &studentclass=${student.studentclass}
+      &coursetype=${student.coursetype}
+      &carometer=${student.carometer}
+      &aapmstatus=${student.aapmstatus}
+      &internshipstatus=${student.internshipstatus}
+      `);
   };
 
   return (
