@@ -26,6 +26,9 @@ export default function Login() {
   return (
     <div>
       <Header />
+      <video autoPlay loop muted className={style.backVideo}>
+        <source src="" type="" />
+      </video>
       <div className={style.page}>
         <div className={style.overlay}>
           <div className={style.loginBox}>
@@ -52,7 +55,7 @@ export default function Login() {
 
                 <div className={style.containerMessage}>
                   {error && <p className={style.messageError}>{error}</p>}
-                  {isLoading && <p className={style.messageSucess}>carregando...</p>}
+                  {isLoading && <p className={style.messageSucess}>Carregando...</p>}
                 </div>
                 <button type="submit">Entrar</button>
               </form>
