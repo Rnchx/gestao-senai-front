@@ -24,10 +24,8 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <Header />
-
-
       <div className={style.page}>
         <div className={style.overlay}>
           <div className={style.videoDiv}>
@@ -36,7 +34,6 @@ export default function Login() {
             </video>
           </div>
           <div className={style.loginBox}>
-
             <div className={style.inputBox}>
               <h2 className={style.h2}>Login</h2>
               <form onSubmit={handleSubmit}>
