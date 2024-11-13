@@ -53,14 +53,14 @@ const ArmarioPage = () => {
     setSelectedLocker(null);
   };
 
-  const handleAssignLocker = async (lockerId, lockerOwner) => {
+  const handleAssignLocker = async (lockerId, studentData) => {
     const token = localStorage.getItem('authToken');
     try {
-      console.log('Atribuindo armário:', lockerId, lockerOwner);
+      console.log('Atribuindo armário:', lockerId, studentData); // Verificação dos dados enviados
       const response = await axios.post(
         `${API_BASE_URL}/lockers/${lockerId}/assign`,
         {
-          nameOwner: lockerOwner.owner
+          owner: studentData.owner  // Certifique-se de que o backend espera "owner"
         },
         {
           headers: {
@@ -69,7 +69,7 @@ const ArmarioPage = () => {
           }
         }
       );
-      console.log('Resposta da atribuição:', response.data); // Log para debug
+      console.log('Resposta da atribuição:', response.data); // Log para confirmação
       await fetchLockers(); // Atualiza a lista de armários
       handleModalClose();
     } catch (error) {
@@ -77,6 +77,7 @@ const ArmarioPage = () => {
       setError(error.response?.data?.message || 'Erro ao atribuir o armário');
     }
   };
+  
 
   const handleUnassignLocker = async (lockerId) => {
     const token = localStorage.getItem('authToken');

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 
 const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
   const [studentData, setStudentData] = useState({
-    name: '',
-    class: ''
+    owner: ''
   });
   const [isAssigning, setIsAssigning] = useState(false);
 
@@ -17,16 +16,19 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
 
   const handleAssignSubmit = (e) => {
     e.preventDefault();
-    if (studentData.name && studentData.class) {
-      console.log('Enviando dados:', locker.id, studentData); // Log para debug
-      onAssign(locker.id, studentData);
-      setStudentData({ name: '', class: '' });
+    if (studentData.owner) {
+      console.log('Enviando dados para atribuição:', locker.id, studentData);
+      onAssign(locker.id, studentData.owner);  // Passando apenas o nome do aluno
+      setStudentData({ owner: '' });
       setIsAssigning(false);
+    } else {
+      console.log('Erro: Nome do aluno está vazio');
     }
   };
 
   const handleUnassignClick = () => {
     if (window.confirm('Tem certeza que deseja desocupar este armário?')) {
+      console.log('Desocupando armário:', locker.id);
       onUnassign(locker.id);
     }
   };
@@ -48,21 +50,18 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
           <div className="flex items-center">
             <span className="font-semibold mr-2">Status:</span>
             <span className={`px-2 py-1 rounded-full text-sm ${
-              locker.occupationStatus === 'ocupado' 
+              locker.occupationstatus === false 
                 ? 'bg-red-100 text-red-800' 
                 : 'bg-gray-100 text-gray-800'
             }`}>
-              {locker.occupationStatus === 'ocupado' ? 'Ocupado' : 'Vago'}
+              {locker.occupationstatus === true ? 'Vago' : 'Ocupado'}
             </span>
           </div>
 
-          {locker.occupationStatus === 'ocupado' ? (
+          {locker.occupationstatus === false ? (
             <div className="space-y-2">
               <div>
                 <span className="font-semibold">Aluno:</span> {locker.owner}
-              </div>
-              <div>
-                <span className="font-semibold">Turma:</span> {locker.ownerClass}
               </div>
               <button
                 onClick={handleUnassignClick}
@@ -88,21 +87,8 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
                     </label>
                     <input
                       type="text"
-                      name="name"
-                      value={studentData.name}
-                      onChange={handleInputChange}
-                      className="mt-1 w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Turma
-                    </label>
-                    <input
-                      type="text"
-                      name="class"
-                      value={studentData.class}
+                      name="owner"
+                      value={studentData.owner}
                       onChange={handleInputChange}
                       className="mt-1 w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
                       required
