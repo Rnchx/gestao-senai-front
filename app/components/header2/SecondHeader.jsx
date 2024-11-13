@@ -2,11 +2,30 @@
 
 import Image from 'next/image';
 import style from './secondHeader.module.css';
-{/*import { FaHome } from "react-icons/fa";*/}
+import { FaHome } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+
+import { useLogin } from "../../components/login/Login";
 
 const SecondHeader = () => {
+
+  const { logOut } = useLogin();
+
+  const handleLogout = () => {
+    logOut();
+  };
+
   return (
     <div className={style.headerContainer}>
+
+      <a className={style.linkPage} href="#" onClick={handleLogout}>
+        <button className={style.buttonHeader}>
+          <p>
+            <FiLogOut />
+          </p>
+        </button>
+      </a>
+
       <Image
         src="/Logo.png"
         alt="Logo da Empresa"
@@ -60,7 +79,7 @@ const SecondHeader = () => {
       <a className={style.linkPage} href="../../inicio">
         <button className={style.buttonHeader}>
           <p>
-            {/*<FaHome />*/}
+            <FaHome />
           </p>
         </button>
       </a>

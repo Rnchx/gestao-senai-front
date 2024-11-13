@@ -86,7 +86,8 @@ export default function EachCurse() {
     const eighteenYearOlds = students.filter((student) => {
       const [day, month, year] = student.dateofbirth.split('/');
       const birthYear = parseInt(year);
-      return currentYear - birthYear === 18;
+      const age = currentYear - birthYear;
+      return age >= 18;
     });
     setFilteredStudents(eighteenYearOlds);
     setShowFilterStudents(false);
