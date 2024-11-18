@@ -14,6 +14,7 @@ export default function EachCurse() {
   const [showFilterStudents, setShowFilterStudents] = useState(false);
   const [error, setError] = useState(null);
   const [activeFilter, setActiveFilter] = useState(null);
+  const [uniqueClasses, setUniqueClasses] = useState([]);
 
   const searchParams = useSearchParams();
   const curso = searchParams.get('curso');
@@ -23,6 +24,12 @@ export default function EachCurse() {
     'Técnico': process.env.NEXT_PUBLIC_API_GET_STUDENTS_TECNICO,
     'Itinerário Formativo': process.env.NEXT_PUBLIC_API_GET_STUDENTS_FORMATIVO,
     'Industrial': process.env.NEXT_PUBLIC_API_GET_STUDENTS_INDUSTRIAL,
+  };
+
+  const extractUniqueClasses = (studentsData) => {
+    const classes = [...new Set(studentsData.map(student => student.studentclass))].filter(Boolean);
+    classes.sort();
+    setUniqueClasses(classes);
   };
 
   const fetchStudents = async (url) => {
@@ -39,8 +46,10 @@ export default function EachCurse() {
           'Content-Type': 'application/json'
         }
       });
-      setStudents(response.data.students || response.data);
-      setFilteredStudents(response.data.students || response.data);
+      const studentsData = response.data.students || response.data;
+      setStudents(studentsData);
+      setFilteredStudents(studentsData);
+      extractUniqueClasses(studentsData);
     } catch (error) {
       console.error(error);
       if (error.message === 'Token não encontrado') {
@@ -71,6 +80,15 @@ export default function EachCurse() {
     setFilteredStudents(aapmContributors);
     setShowFilterStudents(true);
     setActiveFilter('aapmContributors');
+  };
+
+  const filterByClass = (className) => {
+    const filteredByClass = students.filter(
+      (student) => student.studentclass === className
+    );
+    setFilteredStudents(filteredByClass);
+    setShowFilterStudents(false);
+    setActiveFilter(`class-${className}`);
   };
 
   const filterByInternshipStatus = (status) => {
@@ -119,17 +137,17 @@ export default function EachCurse() {
             className={`${style.buttonsFilter} ${activeFilter === null ? style.activeFilter : ''}`}
             onClick={handleShowAllStudents}>Todos</button>
 
-          <button className={`${style.buttonsFilter} ${activeFilter === 'age18' ? style.activeFilter : ''}`} onClick={filterByAge}>
+          <button
+            className={`${style.buttonsFilter} ${activeFilter === 'age18' ? style.activeFilter : ''}`}
+            onClick={filterByAge}>
             18 anos
           </button>
 
-          <button className={`${style.buttonsFilter} ${activeFilter === 'internshipStatus-true' ? style.activeFilter : ''}`} onClick={() => filterByInternshipStatus(true)}>
+          <button
+            className={`${style.buttonsFilter} ${activeFilter === 'internshipStatus-true' ? style.activeFilter : ''}`}
+            onClick={() => filterByInternshipStatus(true)}>
             Disponível para estágio
           </button>
-
-          {/* <button className={`${style.buttonsFilter} ${activeFilter === 'internshipStatus-true' ? style.activeFilter : ''}`} onClick={() => filterByInternshipStatus(true)}>
-            Estagiário
-          </button> */}
 
           <button
             className={`${style.buttonsFilter} ${activeFilter === 'aapmContributors' ? style.activeFilter : ''}`}
@@ -138,8 +156,18 @@ export default function EachCurse() {
             Contribuintes AAPM
           </button>
 
+          {uniqueClasses.map((className) => (
+            <button
+              key={className}
+              className={`${style.buttonsFilter} ${activeFilter === `class-${className}` ? style.activeFilter : ''}`}
+              onClick={() => filterByClass(className)}
+            >
+              {className}
+            </button>
+          ))}
+
         </div>
-        
+
         <div className={style.containerCards}>
           {error && <p>{error}</p>}
           <div className={style.alunoContainer}>
@@ -159,7 +187,7 @@ export default function EachCurse() {
             )}
           </div>
         </div>
-      </div>]
+      </div>
     </PrivateRoute>
   );
 }

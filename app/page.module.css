@@ -18,28 +18,28 @@
 }
 
 .loginBox {
-  max-width: 350px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 18px;
   background-color: #fcfafaef;
   border-radius: 8px;
-  height: 49vh;
+  height: 50vh;
   margin-top: 18vh;
 }
 
 .containerMessage {
-  margin-bottom: 2vh;
+  margin-bottom: 1vh;
 }
 
 .messageError {
   color: #ff0000;
-  font-size: 14px;
+  font-size: 10px;
   text-align: center;
 }
 
 .messageSucess {
   color: #28a745;
-  font-size: 14px;
+  font-size: 10px;
   text-align: center;
 }
 
@@ -82,4 +82,8 @@
 .h2{
   font-size: 4vh;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn{
+  margin-top: 3vh;
 }

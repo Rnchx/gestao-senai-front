@@ -26,9 +26,9 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         localStorage.removeItem('authToken');
         setAuthToken(null);
-        router.push('/login');
+        router.push('/');
     };
-
+    
     const isAuthenticated = () => !!authToken && !loading;
 
     return (
