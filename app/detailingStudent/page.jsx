@@ -58,15 +58,38 @@ export default function DetailingStudent() {
     const studentAge = calculateAge(dateOfBirth);
 
     return (
-        <div className={style.container}>
-            <SecondHeader />
-            <p className={style.studentName}>{studentName}</p>
-            <p className={style.studentAge}>{studentAge} anos</p>
-            <p className={style.studentClass}>{studentClass}</p>
-            <p className={style.studentCourseType}>{formatCourseType(studentCourseType)}</p>
-            <img className={style.imageStudent} src={carometer} alt="Foto do aluno" />
-            <p className={style.aapm}>{aapmStatus ? 'Participa da AAPM' : 'Não participa da AAPM'}</p>
-            <p className={style.disponivelStagio}>{studentInternShipStatus ? 'Disponível para estágio' : 'Indisponível para estágio'}</p>
+        <div>
+            <div className={style.cointainer}>
+
+                <SecondHeader />
+
+                <div className={style.divCenter}>
+                    <div className={style.cardInfo}>
+
+                        <div className={style.divClassRight}>
+                            <div className={style.divName}>
+                            <p className={style.textName}><b>{studentName}</b></p>
+                            </div>
+
+                            <div className={style.divClass}>
+                                <p>{studentClass}</p>
+                            </div>
+                        </div>
+
+                        <div className={style.divAge}>
+                            <p>{dateOfBirth}</p>
+                            <p><b>{studentAge} anos</b></p>
+                        </div>
+                        <p>{formatCourseType(studentCourseType)}</p>
+
+                        <div className={style.divImage}>
+                            <img className={style.imageStudent} src={carometer} alt="foto do aluno" />
+                        </div>
+                        <p>{aapmStatus ? 'Participa da AAPM' : 'Não participa da AAPM'}</p>
+                        <p>{studentInternShipStatus ? 'Disponível para estágio' : 'Indisponível para estágio'}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
