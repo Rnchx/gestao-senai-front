@@ -14,6 +14,8 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
     }));
   };
 
+  
+  
   const handleAssignSubmit = (e) => {
     e.preventDefault();
     if (studentData.owner) {
@@ -45,7 +47,7 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
             ✕
           </button>
         </div>
-
+  
         <div className="space-y-4">
           <div className="flex items-center">
             <span className="font-semibold mr-2">Status:</span>
@@ -57,7 +59,7 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
               {locker.occupationstatus === true ? 'Vago' : 'Ocupado'}
             </span>
           </div>
-
+  
           {locker.occupationstatus === false ? (
             <div className="space-y-2">
               <div>
@@ -108,6 +110,12 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
                     >
                       Cancelar
                     </button>
+                    <button
+                      onClick={handleUnassignClick}
+                      className="flex-1 bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition-colors"
+                    >
+                      Desocupar
+                    </button>
                   </div>
                 </form>
               )}
@@ -118,5 +126,6 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
     </div>
   );
 };
+       
 
 export default Modal;

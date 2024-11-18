@@ -10,10 +10,10 @@ import style from './page.module.css'
 const ArmarioPage = () => {
   const [lockers, setLockers] = useState([]);
   const [selectedLocker, setSelectedLocker] = useState(null);
-  const [loading, setLoading] = useState(true);
+   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_BASE_URL = "http://10.88.199.205:4000"; // Adicionada constante para a URL base
+  const API_BASE_URL = "http://10.88.199.160:4000"; // Adicionada constante para a URL base
 
   useEffect(() => {
     fetchLockers();
@@ -52,7 +52,6 @@ const ArmarioPage = () => {
   const handleModalClose = () => {
     setSelectedLocker(null);
   };
-
   const handleAssignLocker = async (lockerId, studentData) => {
     const token = localStorage.getItem('authToken');
     try {
@@ -77,8 +76,6 @@ const ArmarioPage = () => {
       setError(error.response?.data?.message || 'Erro ao atribuir o armário');
     }
   };
-  
-
   const handleUnassignLocker = async (lockerId) => {
     const token = localStorage.getItem('authToken');
     try {
