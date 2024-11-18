@@ -2,6 +2,9 @@
 import style from './detailing.module.css';
 import SecondHeader from '../components/header2/SecondHeader';
 import { useSearchParams } from 'next/navigation';
+import { GoArrowLeft } from "react-icons/go";
+
+import { useRouter } from 'next/navigation';
 
 const formatCourseType = (type) => {
     const normalizedType = String(type).trim();
@@ -57,18 +60,31 @@ export default function DetailingStudent() {
 
     const studentAge = calculateAge(dateOfBirth);
 
+    const router = useRouter();
+
+    const handleGoBack = () => {
+        router.back();
+    };
+
+
     return (
         <div>
             <div className={style.cointainer}>
 
                 <SecondHeader />
 
+                <button onClick={handleGoBack} className={style.buttonBackPage}>
+                    <p>
+                        <GoArrowLeft />
+                    </p>
+                </button>
+
                 <div className={style.divCenter}>
                     <div className={style.cardInfo}>
 
                         <div className={style.divClassRight}>
                             <div className={style.divName}>
-                            <p className={style.textName}><b>{studentName}</b></p>
+                                <p className={style.textName}><b>{studentName}</b></p>
                             </div>
 
                             <div className={style.divClass}>
