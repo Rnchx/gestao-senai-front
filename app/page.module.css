@@ -23,23 +23,23 @@
   padding: 18px;
   background-color: #fcfafaef;
   border-radius: 8px;
-  height: 45vh;
+  height: 40vh;
   margin-top: 18vh;
 }
 
 .containerMessage {
-  margin-bottom: 2vh;
+  margin-bottom: 1vh;
 }
 
 .messageError {
   color: #ff0000;
-  font-size: 14px;
+  font-size: 10px;
   text-align: center;
 }
 
 .messageSucess {
   color: #28a745;
-  font-size: 14px;
+  font-size: 10px;
   text-align: center;
 }
 
