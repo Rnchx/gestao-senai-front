@@ -14,7 +14,7 @@ export default function EachCurse() {
   const [showFilterStudents, setShowFilterStudents] = useState(false);
   const [error, setError] = useState(null);
   const [activeFilter, setActiveFilter] = useState(null);
-  const [uniqueClasses, setUniqueClasses] = useState([]); // Novo estado para as turmas
+  const [uniqueClasses, setUniqueClasses] = useState([]);
 
   const searchParams = useSearchParams();
   const curso = searchParams.get('curso');

@@ -69,3 +69,20 @@
     border-radius: 8px;
     color: white;
 }
+
+.buttonBackPage {
+    padding: 10px;
+    margin: 8px;
+    background-color: #DA251C;
+    border: none;
+    border-radius: 3px;
+}
+
+.buttonBackPage p {
+    color: white;
+
+}
+
+.buttonBackPage:hover {
+    cursor: pointer;
+}
