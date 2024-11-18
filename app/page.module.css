@@ -18,12 +18,12 @@
 }
 
 .loginBox {
-  max-width: 350px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 18px;
   background-color: #fcfafaef;
   border-radius: 8px;
-  height: 42vh;
+  height: 45vh;
   margin-top: 18vh;
 }
 
@@ -85,5 +85,5 @@
 }
 
 .btn{
-  margin-top: 5vh;
+  margin-top: 3vh;
 }
