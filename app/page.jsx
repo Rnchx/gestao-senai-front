@@ -57,7 +57,7 @@ export default function Login() {
                   {error && <p className={style.messageError}>{error}</p>}
                   {isLoading && <p className={style.messageSucess}>Carregando...</p>}
                 </div>
-                <button type="submit">Entrar</button>
+                <button className={style.btn} type="submit">Entrar</button>
               </form>
             </div>
           </div>

@@ -23,7 +23,7 @@
   padding: 18px;
   background-color: #fcfafaef;
   border-radius: 8px;
-  height: 49vh;
+  height: 42vh;
   margin-top: 18vh;
 }
 
@@ -82,4 +82,8 @@
 .h2{
   font-size: 4vh;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn{
+  margin-top: 5vh;
 }
