@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .studentName {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .studentAge {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .studentClass {
+    font-style: italic;
+    color: #666;
+  }
+  
+  .studentCourseType {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .imageStudent {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .aapm {
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .disponivelStagio {
+    color: #ff9800;
+    font-weight: bold;
+  } 

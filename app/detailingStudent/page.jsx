@@ -58,15 +58,15 @@ export default function DetailingStudent() {
     const studentAge = calculateAge(dateOfBirth);
 
     return (
-        <div>
+        <div className={style.container}>
             <SecondHeader />
-            <p>{studentName}</p>
-            <p>{studentAge} anos</p>
-            <p>{studentClass}</p>
-            <p>{formatCourseType(studentCourseType)}</p>
-            <img className={style.imageStudent} src={carometer} alt="foto do aluno" />
-            <p>{aapmStatus ? 'Participa da AAPM' : 'Não participa da AAPM'}</p>
-            <p>{studentInternShipStatus ? 'Disponível para estágio' : 'Indisponível para estágio'}</p>
+            <p className={style.studentName}>{studentName}</p>
+            <p className={style.studentAge}>{studentAge} anos</p>
+            <p className={style.studentClass}>{studentClass}</p>
+            <p className={style.studentCourseType}>{formatCourseType(studentCourseType)}</p>
+            <img className={style.imageStudent} src={carometer} alt="Foto do aluno" />
+            <p className={style.aapm}>{aapmStatus ? 'Participa da AAPM' : 'Não participa da AAPM'}</p>
+            <p className={style.disponivelStagio}>{studentInternShipStatus ? 'Disponível para estágio' : 'Indisponível para estágio'}</p>
         </div>
     );
 }
