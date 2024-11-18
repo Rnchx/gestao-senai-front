@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
         setAuthToken(null);
         router.push('/');
     };
-
+    
     const isAuthenticated = () => !!authToken && !loading;
 
     return (
