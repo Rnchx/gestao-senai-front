@@ -1,27 +1,16 @@
+'use client'
 import React, { useState } from 'react';
 
 const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
-  const [studentData, setStudentData] = useState({
-    owner: ''
-  });
   const [isAssigning, setIsAssigning] = useState(false);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setStudentData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
+  const [owner, setOwner] = useState('');
   
   
   const handleAssignSubmit = (e) => {
     e.preventDefault();
-    if (studentData.owner) {
-      console.log('Enviando dados para atribuição:', locker.id, studentData);
-      onAssign(locker.id, studentData.owner);  // Passando apenas o nome do aluno
-      setStudentData({ owner: '' });
+    if (owner) {
+      console.log('Enviando dados para atribuição:', locker.id, owner);
+      onAssign(locker.id, owner);  // Passando apenas o nome do aluno
       setIsAssigning(false);
     } else {
       console.log('Erro: Nome do aluno está vazio');
@@ -90,8 +79,8 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
                     <input
                       type="text"
                       name="owner"
-                      value={studentData.owner}
-                      onChange={handleInputChange}
+                      value={owner}
+                      onChange={e => setOwner(e.target.value)}
                       className="mt-1 w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
                       required
                     />

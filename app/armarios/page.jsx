@@ -13,7 +13,7 @@ const ArmarioPage = () => {
    const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_BASE_URL = "http://10.88.199.160:4000"; // Adicionada constante para a URL base
+  const API_BASE_URL = "http://10.88.199.163:4000"; // Adicionada constante para a URL base
 
   useEffect(() => {
     fetchLockers();
@@ -52,14 +52,14 @@ const ArmarioPage = () => {
   const handleModalClose = () => {
     setSelectedLocker(null);
   };
-  const handleAssignLocker = async (lockerId, studentData) => {
+  const handleAssignLocker = async (lockerId, owner) => {
     const token = localStorage.getItem('authToken');
     try {
-      console.log('Atribuindo armário:', lockerId, studentData); // Verificação dos dados enviados
+      console.log('Atribuindo armário:', lockerId, owner); // Verificação dos dados enviados
       const response = await axios.post(
         `${API_BASE_URL}/lockers/${lockerId}/assign`,
         {
-          owner: studentData.owner  // Certifique-se de que o backend espera "owner"
+          owner  // Certifique-se de que o backend espera "owner"
         },
         {
           headers: {
