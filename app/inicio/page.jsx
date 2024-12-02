@@ -7,6 +7,7 @@
 import PrivateRoute from '../components/privateRouter/PrivateRouter';
 import style from './inicio.module.css';
 import SecondHeader from '../components/header2/SecondHeader';
+import Footer from '../components/footer/Footer';
 
 export default function Home() {
 
@@ -33,6 +34,7 @@ export default function Home() {
                     </a>
 
                 </div>
+            <Footer/>
             </div>
             </div>
             </PrivateRoute>
