@@ -1,0 +1,25 @@
+.footerContainer{
+    background-color: #DA251C;
+    
+};
+
+.texto{
+    color: white;
+    font-size: 12px;
+    padding: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.imagem{
+    display: flex;
+    justify-self: center;
+}
+
+.logo{
+    height: 50px;
+    width: 100px;
+}
+
+
+
