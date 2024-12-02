@@ -1,3 +1,8 @@
 .footerContainer{
     background-color: #DA251C;
+    color: white;
+    font-size: 12px;
+    padding: 35px;
+    display: flex;
+    justify-content: center;
 }
