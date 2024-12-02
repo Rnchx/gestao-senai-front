@@ -5,6 +5,7 @@ import style from './page.module.css';
 import Header from "./components/header/Header";
 import { useLogin } from "./components/login/Login";
 import { useRouter } from 'next/navigation';
+import Footer from "./components/footer/Footer";
 
 export default function Login() {
   const { error, isLoading, logIn } = useLogin();
@@ -62,6 +63,7 @@ export default function Login() {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
   );
 }
