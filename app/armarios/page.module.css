@@ -50,10 +50,11 @@
 /* Page.module.css */
 .homeGrid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7 colunas, conforme a imagem */
+  grid-template-columns: repeat(6, 1fr); /* 7 colunas, conforme a imagem */
   gap: 1rem; /* Espaçamento entre os itens */
   justify-content: center;
   align-items: center;
+  margin-left: 6rem;
   margin-top: 2rem;
 }
 
