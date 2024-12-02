@@ -1,0 +1,28 @@
+/* armarios.module.css */
+.locker {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px; 
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, background-color 0.2s;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.locker.available {
+  background-color: #d1d5db; 
+  color: #000; 
+}
+
+.locker.occupied {
+  background-color: #b91c1c; 
+  color: #fff; 
+}
+
+.locker:hover {
+  transform: scale(1.1); 
+}

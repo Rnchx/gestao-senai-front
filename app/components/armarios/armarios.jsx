@@ -1,15 +1,21 @@
 'use-client';
 
-import React from 'react';
-import style from './armarios.module.css';
+import styles from './armarios.module.css';
 
-const Armario = ({ locker, onClick }) => {
+const Armario = ({ id, occupationStatus, onClick }) => {
+  
+
+
+  console.log("id",id);
+  console.log("occupationStatus",occupationStatus);
+  
+
   return (
     <div
-      className={`locker ${locker.occupationStatus === 'ocupado' ? 'occupied' : 'available'}`}
+      className={`${styles.locker} ${occupationStatus ? styles.available : styles.occupied}`} // Verifica e aplica a classe correta
       onClick={onClick}
     >
-      {locker.id}
+      {id} {/* Exibe o ID do locker */}
     </div>
   );
 };

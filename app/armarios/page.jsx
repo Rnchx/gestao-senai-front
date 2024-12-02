@@ -5,13 +5,14 @@ import axios from 'axios';
 import Armario from '../components/armarios/armarios';
 import Modal from '../components/modal/Modal';
 import PrivateRoute from '../components/privateRouter/PrivateRouter';
-import style from './page.module.css'
+import styles from './page.module.css';
 
 const ArmarioPage = () => {
   const [lockers, setLockers] = useState([]);
   const [selectedLocker, setSelectedLocker] = useState(null);
-   const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [inOrder, setInOrder] = useState(false);
 
   const API_BASE_URL = "http://10.88.199.163:4000"; // Adicionada constante para a URL base
 
@@ -35,7 +36,13 @@ const ArmarioPage = () => {
           'Content-Type': 'application/json'
         }
       });
+
+      // Atribui os dados retornados aos armários e loga corretamente
       setLockers(response.data.lockers);
+
+      // Organiza os armários em ordem crescente de ID
+      setLockers(response.data.lockers.sort((a, b) => a.id - b.id));
+      console.log('Armários recebidos:', response.data.lockers);
       setError(null);
     } catch (error) {
       setError('Erro ao carregar os dados dos armários');
@@ -44,6 +51,7 @@ const ArmarioPage = () => {
       setLoading(false);
     }
   };
+
 
   const handleLockerClick = (locker) => {
     setSelectedLocker(locker);
@@ -79,7 +87,7 @@ const ArmarioPage = () => {
   const handleUnassignLocker = async (lockerId) => {
     const token = localStorage.getItem('authToken');
     try {
-      await axios.post(
+      await axios.put(
         `${API_BASE_URL}/lockers/${lockerId}/unassign`,
         {},
         {
@@ -99,29 +107,40 @@ const ArmarioPage = () => {
 
   return (
     <PrivateRoute>
-      <div className="p-6">
-        <h1 className="text-2xl font-bold mb-6">Armários</h1>
+      <div className={styles.container}>
+        <h1 className={styles.pageTitle}>Armários</h1>
+        <div className={styles.legend}>
+          <div className={styles.legendItem}>
+            <div className={`${styles.legendColor} ${styles.legendAvailable}`}></div>
+            Vago
+          </div>
+          <div className={styles.legendItem}>
+            <div className={`${styles.legendColor} ${styles.legendOccupied}`}></div>
+            Ocupado
+          </div>
+        </div>
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <div className={styles.errorMessage}>
             {error}
           </div>
         )}
         {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+          <div className={styles.loaderContainer}>
+            <div className={styles.loader}></div>
           </div>
         ) : lockers && lockers.length > 0 ? (
-          <div className={style.home}>
+          <div className={styles.homeGrid}>
             {lockers.map((locker) => (
               <Armario
                 key={locker.id}
-                locker={locker}
+                id={locker.id}
+                occupationStatus={locker.occupationstatus}// Recebe o status do backend
                 onClick={() => handleLockerClick(locker)}
               />
             ))}
           </div>
         ) : (
-          <div className="text-center text-gray-600">
+          <div className={styles.noResults}>
             Nenhum armário encontrado.
           </div>
         )}
