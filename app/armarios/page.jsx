@@ -6,6 +6,7 @@ import Armario from '../components/armarios/armarios';
 import Modal from '../components/modal/Modal';
 import PrivateRoute from '../components/privateRouter/PrivateRouter';
 import styles from './page.module.css';
+import Header from '../components/header/Header';
 
 const ArmarioPage = () => {
   const [lockers, setLockers] = useState([]);
@@ -107,6 +108,7 @@ const ArmarioPage = () => {
 
   return (
     <PrivateRoute>
+      <Header/>
       <div className={styles.container}>
         <h1 className={styles.pageTitle}>Armários</h1>
         <div className={styles.legend}>

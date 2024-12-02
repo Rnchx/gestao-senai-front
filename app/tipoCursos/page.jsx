@@ -3,6 +3,7 @@
 import style from './tipoCursos.module.css';
 import SecondHeader from '../components/header2/SecondHeader';
 import PrivateRoute from '../components/privateRouter/PrivateRouter';
+import Footer from '../components/footer/Footer';
 
 // import { useEffect } from 'react';
 // import { useRouter } from 'next/navigation';
@@ -38,6 +39,7 @@ export default function TipoCursos() {
                         </div>
                     </a>
                 </div>
+                <Footer/>
             </div>
             </div>
         </PrivateRoute>

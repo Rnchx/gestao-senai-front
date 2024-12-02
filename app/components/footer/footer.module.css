@@ -1,12 +1,12 @@
 .footerContainer{
     background-color: #DA251C;
     
-};
+}
 
-.texto{
+.text{
     color: white;
     font-size: 12px;
-    padding: 35px;
+    padding: 20px;
     display: flex;
     justify-content: center;
 }
@@ -17,8 +17,8 @@
 }
 
 .logo{
-    height: 50px;
-    width: 100px;
+    height: 30px;
+    width: 110px;
 }
 
 
