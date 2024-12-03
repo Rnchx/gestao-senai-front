@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import PrivateRoute from '@/app/components/privateRouter/PrivateRouter';
 
+import { GoArrowLeft } from "react-icons/go";
+
 export default function EachCurse() {
   const [students, setStudents] = useState([]);
   const [eachStudent, setEachStudent] = useState(null);
@@ -126,11 +128,22 @@ export default function EachCurse() {
       `);
   };
 
+  const handleGoBack = () => {
+    router.back();
+  };
+
   return (
     <PrivateRoute>
       <div>
         <SecondHeader />
         <div className={style.containerFilters}>
+
+          <button onClick={handleGoBack} className={style.buttonBackPage}>
+            <p>
+              <GoArrowLeft />
+            </p>
+          </button>
+
           <h1 className={style.titleCourse}> Alunos - {curso}</h1>
 
           <button

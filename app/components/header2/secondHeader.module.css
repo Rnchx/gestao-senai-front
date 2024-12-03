@@ -1,7 +1,7 @@
 .headerContainer {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content:space-evenly;
     background-color: #DA251C;
     padding: 35px 0;
     height: 20px;
@@ -9,6 +9,13 @@
     z-index: 20;
   }
   
+  .headerContainerButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: left;
+  }
+
   .logo {
     width: 150px;
     height: auto;

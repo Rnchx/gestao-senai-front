@@ -15,7 +15,7 @@ const ArmarioPage = () => {
   const [error, setError] = useState(null);
   const [inOrder, setInOrder] = useState(false);
 
-  const API_BASE_URL = "http://10.88.199.163:4000"; // Adicionada constante para a URL base
+  const API_BASE_URL = "http://localhost:4000"; // Adicionada constante para a URL base
 
   useEffect(() => {
     fetchLockers();
@@ -108,7 +108,7 @@ const ArmarioPage = () => {
 
   return (
     <PrivateRoute>
-      <Header/>
+      <Header />
       <div className={styles.container}>
         <h1 className={styles.pageTitle}>Armários</h1>
         <div className={styles.legend}>

@@ -17,22 +17,25 @@ const SecondHeader = () => {
 
   return (
     <div className={style.headerContainer}>
+      <div className={style.headerContainerButtons}>
 
-      <a className={style.linkPage} href="../../inicio">
-        <button className={style.buttonHeader}>
-          <p>
-            <FaHome />
-          </p>
-        </button>
-      </a>
+        <a className={style.linkPage} href="../../inicio">
 
-      <a className={style.linkPage} href="#" onClick={handleLogout}>
-        <button className={style.buttonHeader}>
-          <p>
-            <FiLogOut />
-          </p>
-        </button>
-      </a>
+          <button className={style.buttonHeader}>
+            <p>
+              <FaHome />
+            </p>
+          </button>
+        </a>
+
+        <a className={style.linkPage} href="#" onClick={handleLogout}>
+          <button className={style.buttonHeader}>
+            <p>
+              <FiLogOut />
+            </p>
+          </button>
+        </a>
+      </div>
 
       <Image
         src="/Logo.png"

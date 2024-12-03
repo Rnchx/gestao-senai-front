@@ -1,6 +1,6 @@
 .logo{
-    width: 200px;
-    height: 7vh;
+    width: 300px;
+    height: 8vh;
     margin: 5px;
     margin-right: 25px;
     
@@ -8,10 +8,9 @@
 .divImg{
     display: flex;
     justify-content: right;
-    align-items: right;
 }
 .headerContainer{
-    background-color: #DA251C;
+    background-color: #da251c;
     padding: 10px;
     
 }
