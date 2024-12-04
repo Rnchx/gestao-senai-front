@@ -17,8 +17,11 @@
   
   .overlay {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-top: 15vh;
+
   }
 
   .linkImage {
@@ -29,7 +32,6 @@
     display: flex;
     margin: 60px;
     flex-direction: column;
-    margin-top: 33vh;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
@@ -58,3 +60,26 @@
     width: 45%;
     height: 45%;
   }
+
+  .containerFooter {
+  margin-top: 29vh;
+}
+
+.buttonBackPage {
+    padding: 8px;
+    margin: 8px;
+    background-color: #DA251C;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.buttonBackPage p {
+    color: white;
+
+}
+
+.buttonBackPage:hover {
+    cursor: pointer;
+    font-size: 15px;
+}

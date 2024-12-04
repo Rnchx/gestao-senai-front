@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import PrivateRoute from '@/app/components/privateRouter/PrivateRouter';
+import Footer from '@/app/components/footer/Footer';
 
 import { GoArrowLeft } from "react-icons/go";
 
@@ -118,14 +119,14 @@ export default function EachCurse() {
   const handleStudentCardClick = (student) => {
     router.push(`/detailingStudent?
       id=${student.id}
-      &name=${student.name}
-      &dateofbirth=${student.dateofbirth}
-      &studentclass=${student.studentclass}
-      &coursetype=${student.coursetype}
-      &carometer=${student.carometer}
+      &name=${encodeURIComponent(student.name)}
+      &dateofbirth=${encodeURIComponent(student.dateofbirth)}
+      &studentclass=${encodeURIComponent(student.studentclass)}
+      &coursetype=${encodeURIComponent(student.coursetype)}
+      &carometer=${encodeURIComponent(student.carometer)}
       &aapmstatus=${student.aapmstatus}
       &internshipstatus=${student.internshipstatus}
-      `);
+    `);
   };
 
   const handleGoBack = () => {
@@ -200,6 +201,7 @@ export default function EachCurse() {
             )}
           </div>
         </div>
+        {/* <Footer /> */}
       </div>
     </PrivateRoute>
   );

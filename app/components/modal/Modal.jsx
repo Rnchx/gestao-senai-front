@@ -5,8 +5,8 @@ import styles from './Modal.module.css';
 const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
   const [isAssigning, setIsAssigning] = useState(false);
   const [owner, setOwner] = useState('');
-  
-  
+
+
   const handleAssignSubmit = (e) => {
     e.preventDefault();
     if (owner) {
@@ -30,30 +30,29 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
       <div className={styles.modalContainer}>
         <div className={styles.modalHeader}>
           <h2 className={styles.modalTitle}>Armário {locker.id}</h2>
-          <button 
+          <button
             onClick={onClose}
             className={styles.closeButton}
           >
             ✕
           </button>
         </div>
-  
+
         <div>
           <div>
-            <span>Status:</span>
-            <span className={`${styles.statusBadge} ${
-              locker.occupationstatus === false 
-                ? styles.statusOccupied 
-                : styles.statusVacant
-            }`}>
+            <span>Status: </span>
+            <span className={`${styles.statusBadge} ${locker.occupationstatus === false
+              ? styles.statusOccupied
+              : styles.statusVacant
+              }`}>
               {locker.occupationstatus === true ? 'Vago' : 'Ocupado'}
             </span>
           </div>
-  
+
           {locker.occupationstatus === false ? (
             <div>
               <div>
-                <span className="font-semibold">Aluno:</span> {locker.owner}
+                <span className="font-semibold">Aluno:</span> <strong> {locker.owner} </strong>
               </div>
               <button
                 onClick={handleUnassignClick}
@@ -100,7 +99,7 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
                     >
                       Cancelar
                     </button>
-                    
+
                   </div>
                 </form>
               )}
@@ -111,6 +110,6 @@ const Modal = ({ locker, onClose, onAssign, onUnassign }) => {
     </div>
   );
 };
-       
+
 
 export default Modal;

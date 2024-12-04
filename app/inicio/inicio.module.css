@@ -16,9 +16,11 @@
 }
 
 .overlay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 19vh;
 }
 
 .linkContainer {
@@ -29,7 +31,6 @@
   display: flex;
   margin: 60px;
   flex-direction: column;
-  margin-top: 33vh;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
@@ -57,4 +58,8 @@
 .img{
   width: 45%;
   height: 45%;
+}
+
+.containerFooter {
+   margin-top: 29.6vh;
 }

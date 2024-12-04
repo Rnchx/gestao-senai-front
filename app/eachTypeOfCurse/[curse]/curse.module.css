@@ -51,10 +51,12 @@ justify-content: center;
   width: 100%;
   max-width: 200px;
   text-align: center;
+  transition: 0.5s;
 }
 
 .alunoCard:hover {
   cursor: pointer;
+  background-color: #bebebe;
 }
 
 .imageStudent {

@@ -3,10 +3,43 @@
   padding: 1.5rem; /* p-6 */
 }
 
+.container2 {
+  display: flex;
+}
+
+.buttonBackPage {
+    padding: 8px;
+    margin: 8px;
+    background-color: #DA251C;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.buttonBackPage p {
+    color: white;
+
+}
+
+.buttonBackPage:hover {
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.containerTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-left: 3rem;
+}
+
 .pageTitle {
-  font-size: 1.5rem; /* text-2xl */
+  font-size: 1.1rem; /* text-2xl */
   font-weight: bold; /* font-bold */
-  margin-bottom: 1.5rem; /* mb-6 */
+  color: #DA251C;
+  text-decoration: underline;
 }
 
 .errorMessage {
@@ -49,13 +82,16 @@
 
 /* Page.module.css */
 .homeGrid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 7 colunas, conforme a imagem */
-  gap: 1rem; /* Espaçamento entre os itens */
-  justify-content: center;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  margin-left: 6rem;
-  margin-top: 2rem;
+  justify-content: center;
+  justify-items: center;
+  gap: 1.2rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  border-radius: 10px;
 }
 
 .legend {

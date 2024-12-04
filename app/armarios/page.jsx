@@ -6,7 +6,10 @@ import Armario from '../components/armarios/armarios';
 import Modal from '../components/modal/Modal';
 import PrivateRoute from '../components/privateRouter/PrivateRouter';
 import styles from './page.module.css';
-import Header from '../components/header/Header';
+import SecondHeader from '../components/header2/SecondHeader';
+import { useRouter } from 'next/navigation';
+
+import { GoArrowLeft } from "react-icons/go";
 
 const ArmarioPage = () => {
   const [lockers, setLockers] = useState([]);
@@ -15,7 +18,7 @@ const ArmarioPage = () => {
   const [error, setError] = useState(null);
   const [inOrder, setInOrder] = useState(false);
 
-  const API_BASE_URL = "http://localhost:4000"; // Adicionada constante para a URL base
+  const API_BASE_URL = "http://localhost:4000";
 
   useEffect(() => {
     fetchLockers();
@@ -106,11 +109,32 @@ const ArmarioPage = () => {
     }
   };
 
+  const router = useRouter();
+
+  const handleGoBack = () => {
+    router.back();
+  };
+
   return (
     <PrivateRoute>
-      <Header />
+      <SecondHeader />
       <div className={styles.container}>
-        <h1 className={styles.pageTitle}>Armários</h1>
+
+        <div className={styles.container2}>
+          <div className={styles.containerButton}>
+
+            <button onClick={handleGoBack} className={styles.buttonBackPage}>
+              <p>
+                <GoArrowLeft />
+              </p>
+            </button>
+          </div>
+
+          <div className={styles.containerTitle}>
+            <h1 className={styles.pageTitle}>Painel de controle - armários</h1>
+          </div>
+
+        </div>
         <div className={styles.legend}>
           <div className={styles.legendItem}>
             <div className={`${styles.legendColor} ${styles.legendAvailable}`}></div>

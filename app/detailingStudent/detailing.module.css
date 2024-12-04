@@ -1,14 +1,10 @@
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .divCenter {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    justify-items: baseline;
 }
 
 .cardInfo {
@@ -48,9 +44,10 @@
 .divClassRight {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 12rem;
+    gap: 15rem;
+    margin-bottom: 1rem;
 }
 
 .divName {
@@ -85,4 +82,38 @@
 
 .buttonBackPage:hover {
     cursor: pointer;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.divStatus {
+    padding: 4px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    width: 30%;
+    margin: 0.4rem;
+}
+
+.statusTrue {
+    color: white;
+    background-color: #2e7d32;
+    font-weight: bold;
+}
+
+.statusFalse {
+    color: white;
+    font-weight: bold;
+     background-color: #DA251C;
+}
+
+.containerFooter {
+    margin-top: 29.1vh;
 }

@@ -3,6 +3,8 @@ import style from './detailing.module.css';
 import SecondHeader from '../components/header2/SecondHeader';
 import { useSearchParams } from 'next/navigation';
 import { GoArrowLeft } from "react-icons/go";
+import PrivateRoute from '@/app/components/privateRouter/PrivateRouter';
+import Footer from '../components/footer/Footer';
 
 import { useRouter } from 'next/navigation';
 
@@ -55,8 +57,8 @@ export default function DetailingStudent() {
     const studentClass = searchParams.get('studentclass');
     const studentCourseType = searchParams.get('coursetype');
     const carometer = searchParams.get('carometer');
-    const aapmStatus = searchParams.get('aapmstatus');
-    const studentInternShipStatus = searchParams.get('internshipstatus');
+    const aapmStatus = String(searchParams.get('aapmstatus')).toLowerCase().trim() === 'true';
+    const studentInternShipStatus = String(searchParams.get('internshipstatus')).toLowerCase() === 'true';
 
     const studentAge = calculateAge(dateOfBirth);
 
@@ -66,46 +68,56 @@ export default function DetailingStudent() {
         router.back();
     };
 
-
     return (
-        <div>
-            <div className={style.cointainer}>
+        <PrivateRoute>
+            <div>
+                <div className={style.cointainer}>
+                    <SecondHeader />
 
-                <SecondHeader />
+                    <button onClick={handleGoBack} className={style.buttonBackPage}>
+                        <p>
+                            <GoArrowLeft />
+                        </p>
+                    </button>
 
-                <button onClick={handleGoBack} className={style.buttonBackPage}>
-                    <p>
-                        <GoArrowLeft />
-                    </p>
-                </button>
+                    <div className={style.divCenter}>
+                        <div className={style.cardInfo}>
+                            <div className={style.divClassRight}>
+                                <div className={style.divName}>
+                                    <p className={style.textName}><b>{studentName}</b></p>
+                                </div>
 
-                <div className={style.divCenter}>
-                    <div className={style.cardInfo}>
-
-                        <div className={style.divClassRight}>
-                            <div className={style.divName}>
-                                <p className={style.textName}><b>{studentName}</b></p>
+                                <div className={style.divClass}>
+                                    <p>{studentClass}</p>
+                                </div>
                             </div>
 
-                            <div className={style.divClass}>
-                                <p>{studentClass}</p>
+                            <div className={style.divAge}>
+                                <p>{dateOfBirth}</p>
+                                <p><b>{studentAge} anos</b></p>
+                            </div>
+                            <p>{formatCourseType(studentCourseType)}</p>
+
+                            <div className={style.divImage}>
+                                <img className={style.imageStudent} src={carometer} alt="foto do aluno" />
+                            </div>
+
+                            <div className={style.container2}>
+                                <p className={`${style.divStatus} ${aapmStatus ? style.statusTrue : style.statusFalse}`}>
+                                    {aapmStatus ? 'participa da AAPM' : 'não participa da AAPM'}
+                                </p>
+
+                                <p className={`${style.divStatus} ${studentInternShipStatus ? style.statusTrue : style.statusFalse}`}>
+                                    {studentInternShipStatus ? 'disponível para estágio' : 'indisponível para estágio'}
+                                </p>
                             </div>
                         </div>
-
-                        <div className={style.divAge}>
-                            <p>{dateOfBirth}</p>
-                            <p><b>{studentAge} anos</b></p>
-                        </div>
-                        <p>{formatCourseType(studentCourseType)}</p>
-
-                        <div className={style.divImage}>
-                            <img className={style.imageStudent} src={carometer} alt="foto do aluno" />
-                        </div>
-                        <p>{aapmStatus ? 'Participa da AAPM' : 'Não participa da AAPM'}</p>
-                        <p>{studentInternShipStatus ? 'Disponível para estágio' : 'Indisponível para estágio'}</p>
                     </div>
                 </div>
+                <div className={style.containerFooter}>
+                    <Footer />
+                </div>
             </div>
-        </div>
+        </PrivateRoute>
     );
 }

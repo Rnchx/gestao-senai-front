@@ -27,21 +27,24 @@
     justify-content: center;
   }
 
-  .buttonHeader {
-    padding: 10px;
-    background-color: white;
-    border: none;
-    border-radius: 3px;
-  }
+.buttonHeader {
+  padding: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 3px;
+  transition: transform 0.3s ease, padding 0.3s ease;
+}
 
-  .buttonHeader p {
+  .textButton {
     color: #DA251C;
-    
+    font-weight: 700;
   }
 
-  .buttonHeader:hover {
-    cursor: pointer;
-  }
+.buttonHeader:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  padding: 10px;
+}
 
   .linkPage {
     text-decoration: none;

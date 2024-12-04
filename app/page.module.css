@@ -2,9 +2,22 @@
   height: 65vh;
 }
 
-.inputBox {
+.loginBox {
+  margin: 0 auto;
+  margin-top: 18vh;
+  display: flex;
   align-items: center;
-  margin-top: 5vh;
+  justify-content:center;
+}
+
+.inputBox {
+  background-color: #fcfafaef;
+  border-radius: 8px;
+  height: 35vh;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .videoDiv video {
@@ -15,16 +28,6 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
-}
-
-.loginBox {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 18px;
-  background-color: #fcfafaef;
-  border-radius: 8px;
-  height: 50vh;
-  margin-top: 18vh;
 }
 
 .containerMessage {
@@ -43,35 +46,47 @@
   text-align: center;
 }
 
-.loginBox button {
-  padding: 2vh;
+.containerButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+.inputBox button {
+  width: 100%;
+  padding: 1vh;
   background-color: #e60000;
   color: white;
   border: none;
-  border-radius: 30px;
-  align-items: center;
+  border-radius: 4px;
+  transition: 0.6s;
 }
 
-.loginBox button:hover {
-  background-color: #cc0000;
+.inputBox button:hover {
+  background-color: #b10000;
   cursor: pointer;
 }
 
-.loginBox h2 {
+.inputBox h2 {
   text-align: center;
   padding: 1vh;
 }
 
-.loginBox form {
+.inputBox form {
   display: flex;
   flex-direction: column;
 }
 
-.loginBox label {
-  margin-bottom: 5px;
+.containerInputs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
 }
 
-.loginBox input {
+.inputBox input {
+  width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 1.5px solid #ccc;
@@ -79,11 +94,36 @@
   margin: 5px;
 }
 
+.inputBox input:focus {
+   outline: none;
+    border-color: #dc2626;
+    box-shadow: 0 0 0 1px #dc2626;
+}
+
 .h2{
   font-size: 4vh;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.btn{
-  margin-top: 3vh;
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.inputGroup input {
+  padding-left: 40px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.inputGroup .icon {
+  position: absolute;
+  left: 10px;
+  font-size: 20px;
+  color: #dc2626;
 }
